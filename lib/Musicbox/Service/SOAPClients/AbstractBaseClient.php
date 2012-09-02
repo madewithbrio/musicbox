@@ -51,6 +51,6 @@ abstract class Musicbox_Service_SOAPClients_AbstractBaseClient extends SoapClien
     public function addTokenESBCredentials()
     {
     	$this->ESBCredentials = new Sapo_SDB_Definitions_ESBCredentials_t;
-    	$this->ESBCredentials->ESBToken = Sapo_Auth_Token::getServiceAuthToken('ticketline');
+    	$this->ESBCredentials->ESBToken = Sapo_Auth_Token::getServiceAuthToken('musicbox');
     }
 }
