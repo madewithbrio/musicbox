@@ -4,7 +4,7 @@ require_once ('../bootstrap.php');
 class Exception_NotFound extends Exception {}
 
 try {
-
+	
 	if (preg_match('@^\/static\/@', $_SERVER['REQUEST_URI']))
 	{
 		throw new Exception_NotFound("request static file");

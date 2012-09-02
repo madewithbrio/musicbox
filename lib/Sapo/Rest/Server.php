@@ -21,7 +21,7 @@ class Sapo_Rest_Server {
 			
 			if (!$reflection->isInstantiable())
 			{
-				throw new Exception("Not istantiable");
+				throw new Exception("Not instantiable");
 			}
 			
 			$this->_class = $class;
@@ -121,5 +121,5 @@ class Sapo_Rest_Server {
 
 interface Sapo_Rest_Server_Interface
 {
-	public function status();
+	public function Status();
 }

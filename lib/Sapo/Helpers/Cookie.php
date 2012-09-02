@@ -43,7 +43,7 @@ class Sapo_Helpers_Cookie
 	public static function getCookieDomain()
 	{
 		if (defined('COOKIE_DOMAIN')) return COOKIE_DOMAIN;
-		else return 'ticketline.dev.sapo.pt';
+		else return defined('SERVERNAME') ? SERVERNAME : $_SERVER['HTTP_HOST'];
 	}
 
 	public static function setCookieParams()
