@@ -1,0 +1,1719 @@
+<definitions targetNamespace="http://services.sapo.pt/Music/OnDemand/PublicApi" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://services.sapo.pt/Music/OnDemand/PublicApi" xmlns:esb="http://services.sapo.pt/definitions">
+  <types>
+    <xsd:schema targetNamespace="http://services.sapo.pt/Music/OnDemand/PublicApi" elementFormDefault="qualified">
+      <xsd:import namespace="http://services.sapo.pt/definitions" schemaLocation="esbCredentials.xsd" />
+      <xsd:include schemaLocation="Music_OnDemand_PublicApi.xsd" />
+      <xsd:element name="AddAlbumToFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="AlbumId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddAlbumToFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddAlbumToFavoritesResult" type="tns:AddAlbumToFavoritesResult" minOccurs="0" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddAlbumTracksToPlaylist">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="AlbumId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddAlbumTracksToPlaylistResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddAlbumTracksToPlaylistResult" type="tns:AddAlbumTracksToPlaylistResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddArtistToFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddArtistToFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddArtistToFavoritesResult" type="tns:AddArtistToFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPlaylist">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistTitle" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPlaylistResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddPlaylistResult" type="tns:AddPlaylistResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPlaylistToFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddPlaylistToFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddPlaylistToFavoritesResult" type="tns:AddPlaylistToFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddTracksToPlaylist">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackIdList" type="tns:TrackIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddTracksToPlaylistResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddTracksToPlaylistResult" type="tns:AddTracksToPlaylistResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddTrackToFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddTrackToFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddTrackToFavoritesResult" type="tns:AddTrackToFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="AlbumId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetAlbumByIdResult" type="tns:GetAlbumByIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByArtistId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByArtistIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetAlbumsByArtistIdResult" type="tns:GetAlbumsByArtistIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByCategoryId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="CategoryId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByCategoryIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetAlbumsByCategoryIdResult" type="tns:GetAlbumsByCategoryIdResult" minOccurs="0" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByCollectionId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="CollectionId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                </xsd:documentation>
+                <xsd:documentation xml:lang="pt">
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAlbumsByCollectionIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetAlbumsByCollectionIdResult" type="tns:GetAlbumsByCollectionIdResult" minOccurs="1" maxOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                </xsd:documentation>
+                <xsd:documentation xml:lang="pt">
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetArtistById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetArtistByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetArtistByIdResult" type="tns:GetArtistByIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEditorialPlaylists">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetEditorialPlaylistsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetEditorialPlaylistsResult" type="tns:GetEditorialPlaylistsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteAlbums">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteAlbumsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteAlbumsResult" type="tns:GetFavoriteAlbumsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteAlbumsByUserIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="UserIdList" type="tns:UserIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteAlbumsByUserIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteAlbumsByUserIdsResult" type="tns:GetFavoriteAlbumsByUserIdsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteArtists">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteArtistsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteArtistsResult" type="tns:GetFavoriteArtistsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteArtistsByUserIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="UserIdList" type="tns:UserIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteArtistsByUserIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteArtistsByUserIdsResult" type="tns:GetFavoriteArtistsByUserIdsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoritePlaylists">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoritePlaylistsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoritePlaylistsResult" type="tns:GetFavoritePlaylistsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoritePlaylistsByUserIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="UserIdList" type="tns:UserIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoritePlaylistsByUserIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoritePlaylistsByUserIdsResult" type="tns:GetFavoritePlaylistsByUserIdsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteTracks">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteTracksResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteTracksResult" type="tns:GetFavoriteTracksResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteTracksByUserIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="UserIdList" type="tns:UserIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFavoriteTracksByUserIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetFavoriteTracksByUserIdsResult" type="tns:GetFavoriteTracksByUserIdsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNewAlbums">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNewAlbumsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetNewAlbumsResult" type="tns:GetNewAlbumsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNewTracks">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetNewTracksResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetNewTracksResult" type="tns:GetNewTracksResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylistById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylistByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetPlaylistByIdResult" type="tns:GetPlaylistByIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylists">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylistsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetPlaylistsResult" type="tns:GetPlaylistsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylistsByArtistId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPlaylistsByArtistIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetPlaylistsByArtistIdResult" type="tns:GetPlaylistsByArtistIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPopularTracksByArtistId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPopularTracksByArtistIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetPopularTracksByArtistIdResult" type="tns:GetPopularTracksByArtistIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecommendedAlbums">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecommendedAlbumsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetRecommendedAlbumsResult" type="tns:GetRecommendedAlbumsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecommendedTracks">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecommendedTracksResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetRecommendedTracksResult" type="tns:GetRecommendedTracksResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetStream">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetStreamResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetStreamResult" type="tns:GetStreamResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTopAlbums">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTopAlbumsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTopAlbumsResult" type="tns:GetTopAlbumsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTopTracks">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTopTracksResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTopTracksResult" type="tns:GetTopTracksResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTrackById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTrackByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTrackByIdResult" type="tns:GetTrackByIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByAlbumId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="AlbumId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByAlbumIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTracksByAlbumIdResult" type="tns:GetTracksByAlbumIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByCategoryId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="CategoryId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByCategoryIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTracksByCategoryIdResult" type="tns:GetTracksByCategoryIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByCollectionId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="CollectionId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                </xsd:documentation>
+                <xsd:documentation xml:lang="pt">
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTracksByCollectionIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetTracksByCollectionIdResult" type="tns:GetTracksByCategoryIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetUserIdByFacebookId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="FacebookId" type="xsd:long" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetUserIdByFacebookIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetUserIdByFacebookIdResult" type="tns:GetUserIdByFacebookIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetUserIdsByFacebookIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="FacebookIdList" type="tns:FacebookIdList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetUserIdsByFacebookIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetUserIdsByFacebookIdsResult" type="tns:GetUserIdsByFacebookIdsResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveAlbumFromFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="AlbumId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveAlbumFromFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemoveAlbumFromFavoritesResult" type="tns:RemoveAlbumFromFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveArtistFromFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveArtistFromFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemoveArtistFromFavoritesResult" type="tns:RemoveArtistFromFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePlaylistById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePlaylistByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemovePlaylistByIdResult" type="tns:RemovePlaylistByIdResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePlaylistFromFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemovePlaylistFromFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemovePlaylistFromFavoritesResult" type="tns:RemovePlaylistFromFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveTrackFromFavorites">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackId" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveTrackFromFavoritesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemoveTrackFromFavoritesResult" type="tns:RemoveTrackFromFavoritesResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveTracksFromPlaylist">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistIndexList" type="tns:PlaylistIndexList" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveTracksFromPlaylistResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RemoveTracksFromPlaylistResult" type="tns:RemoveTracksFromPlaylistResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenamePlaylistById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistId" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="PlaylistTitle" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RenamePlaylistByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RenamePlaylistByIdResult" type="tns:RenamePlaylistByIdResult" minOccurs="0" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReportPlay">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ReportKey" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="Duration" type="xsd:int" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReportPlayResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ReportPlayResult" type="tns:ReportPlayResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Search">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="SearchTerm" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SearchResult" type="tns:SearchResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchTrack">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MBCredentials" type="tns:MBCredentials" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="TrackName" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+            <xsd:element name="ArtistName" type="xsd:string" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SearchTrackResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SearchTrackResult" type="tns:SearchTrackResult" minOccurs="1" maxOccurs="1" nillable="false" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="ESBCredentialsSoapIn">
+    <part name="ESBCredentials" element="esb:ESBCredentials" />
+  </message>
+  <message name="AddAlbumToFavoritesSoapIn">
+    <part name="parameters" element="tns:AddAlbumToFavorites" />
+  </message>
+  <message name="AddAlbumToFavoritesSoapOut">
+    <part name="parameters" element="tns:AddAlbumToFavoritesResponse" />
+  </message>
+  <message name="AddAlbumTracksToPlaylistSoapIn">
+    <part name="parameters" element="tns:AddAlbumTracksToPlaylist" />
+  </message>
+  <message name="AddAlbumTracksToPlaylistSoapOut">
+    <part name="parameters" element="tns:AddAlbumTracksToPlaylistResponse" />
+  </message>
+  <message name="AddArtistToFavoritesSoapIn">
+    <part name="parameters" element="tns:AddArtistToFavorites" />
+  </message>
+  <message name="AddArtistToFavoritesSoapOut">
+    <part name="parameters" element="tns:AddArtistToFavoritesResponse" />
+  </message>
+  <message name="AddPlaylistSoapIn">
+    <part name="parameters" element="tns:AddPlaylist" />
+  </message>
+  <message name="AddPlaylistSoapOut">
+    <part name="parameters" element="tns:AddPlaylistResponse" />
+  </message>
+  <message name="AddPlaylistToFavoritesSoapIn">
+    <part name="parameters" element="tns:AddPlaylistToFavorites" />
+  </message>
+  <message name="AddPlaylistToFavoritesSoapOut">
+    <part name="parameters" element="tns:AddPlaylistToFavoritesResponse" />
+  </message>
+  <message name="AddTracksToPlaylistSoapIn">
+    <part name="parameters" element="tns:AddTracksToPlaylist" />
+  </message>
+  <message name="AddTracksToPlaylistSoapOut">
+    <part name="parameters" element="tns:AddTracksToPlaylistResponse" />
+  </message>
+  <message name="AddTrackToFavoritesSoapIn">
+    <part name="parameters" element="tns:AddTrackToFavorites" />
+  </message>
+  <message name="AddTrackToFavoritesSoapOut">
+    <part name="parameters" element="tns:AddTrackToFavoritesResponse" />
+  </message>
+  <message name="GetAlbumByIdSoapIn">
+    <part name="parameters" element="tns:GetAlbumById" />
+  </message>
+  <message name="GetAlbumByIdSoapOut">
+    <part name="parameters" element="tns:GetAlbumByIdResponse" />
+  </message>
+  <message name="GetAlbumsByArtistIdSoapIn">
+    <part name="parameters" element="tns:GetAlbumsByArtistId" />
+  </message>
+  <message name="GetAlbumsByArtistIdSoapOut">
+    <part name="parameters" element="tns:GetAlbumsByArtistIdResponse" />
+  </message>
+  <message name="GetAlbumsByCategoryIdSoapIn">
+    <part name="parameters" element="tns:GetAlbumsByCategoryId" />
+  </message>
+  <message name="GetAlbumsByCategoryIdSoapOut">
+    <part name="parameters" element="tns:GetAlbumsByCategoryIdResponse" />
+  </message>
+  <message name="GetAlbumsByCollectionIdSoapIn">
+    <part name="parameters" element="tns:GetAlbumsByCollectionId" />
+  </message>
+  <message name="GetAlbumsByCollectionIdSoapOut">
+    <part name="parameters" element="tns:GetAlbumsByCollectionIdResponse" />
+  </message>
+  <message name="GetArtistByIdSoapIn">
+    <part name="parameters" element="tns:GetArtistById" />
+  </message>
+  <message name="GetArtistByIdSoapOut">
+    <part name="parameters" element="tns:GetArtistByIdResponse" />
+  </message>
+  <message name="GetEditorialPlaylistsSoapIn">
+    <part name="parameters" element="tns:GetEditorialPlaylists" />
+  </message>
+  <message name="GetEditorialPlaylistsSoapOut">
+    <part name="parameters" element="tns:GetEditorialPlaylistsResponse" />
+  </message>
+  <message name="GetFavoriteAlbumsSoapIn">
+    <part name="parameters" element="tns:GetFavoriteAlbums" />
+  </message>
+  <message name="GetFavoriteAlbumsSoapOut">
+    <part name="parameters" element="tns:GetFavoriteAlbumsResponse" />
+  </message>
+  <message name="GetFavoriteAlbumsByUserIdsSoapIn">
+    <part name="parameters" element="tns:GetFavoriteAlbumsByUserIds" />
+  </message>
+  <message name="GetFavoriteAlbumsByUserIdsSoapOut">
+    <part name="parameters" element="tns:GetFavoriteAlbumsByUserIdsResponse" />
+  </message>
+  <message name="GetFavoriteArtistsSoapIn">
+    <part name="parameters" element="tns:GetFavoriteArtists" />
+  </message>
+  <message name="GetFavoriteArtistsSoapOut">
+    <part name="parameters" element="tns:GetFavoriteArtistsResponse" />
+  </message>
+  <message name="GetFavoriteArtistsByUserIdsSoapIn">
+    <part name="parameters" element="tns:GetFavoriteArtistsByUserIds" />
+  </message>
+  <message name="GetFavoriteArtistsByUserIdsSoapOut">
+    <part name="parameters" element="tns:GetFavoriteArtistsByUserIdsResponse" />
+  </message>
+  <message name="GetFavoritePlaylistsSoapIn">
+    <part name="parameters" element="tns:GetFavoritePlaylists" />
+  </message>
+  <message name="GetFavoritePlaylistsSoapOut">
+    <part name="parameters" element="tns:GetFavoritePlaylistsResponse" />
+  </message>
+  <message name="GetFavoritePlaylistsByUserIdsSoapIn">
+    <part name="parameters" element="tns:GetFavoritePlaylistsByUserIds" />
+  </message>
+  <message name="GetFavoritePlaylistsByUserIdsSoapOut">
+    <part name="parameters" element="tns:GetFavoritePlaylistsByUserIdsResponse" />
+  </message>
+  <message name="GetFavoriteTracksSoapIn">
+    <part name="parameters" element="tns:GetFavoriteTracks" />
+  </message>
+  <message name="GetFavoriteTracksSoapOut">
+    <part name="parameters" element="tns:GetFavoriteTracksResponse" />
+  </message>
+  <message name="GetFavoriteTracksByUserIdsSoapIn">
+    <part name="parameters" element="tns:GetFavoriteTracksByUserIds" />
+  </message>
+  <message name="GetFavoriteTracksByUserIdsSoapOut">
+    <part name="parameters" element="tns:GetFavoriteTracksByUserIdsResponse" />
+  </message>
+  <message name="GetNewAlbumsSoapIn">
+    <part name="parameters" element="tns:GetNewAlbums" />
+  </message>
+  <message name="GetNewAlbumsSoapOut">
+    <part name="parameters" element="tns:GetNewAlbumsResponse" />
+  </message>
+  <message name="GetNewTracksSoapIn">
+    <part name="parameters" element="tns:GetNewTracks" />
+  </message>
+  <message name="GetNewTracksSoapOut">
+    <part name="parameters" element="tns:GetNewTracksResponse" />
+  </message>
+  <message name="GetPlaylistByIdSoapIn">
+    <part name="parameters" element="tns:GetPlaylistById" />
+  </message>
+  <message name="GetPlaylistByIdSoapOut">
+    <part name="parameters" element="tns:GetPlaylistByIdResponse" />
+  </message>
+  <message name="GetPlaylistsSoapIn">
+    <part name="parameters" element="tns:GetPlaylists" />
+  </message>
+  <message name="GetPlaylistsSoapOut">
+    <part name="parameters" element="tns:GetPlaylistsResponse" />
+  </message>
+  <message name="GetPlaylistsByArtistIdSoapIn">
+    <part name="parameters" element="tns:GetPlaylistsByArtistId" />
+  </message>
+  <message name="GetPlaylistsByArtistIdSoapOut">
+    <part name="parameters" element="tns:GetPlaylistsByArtistIdResponse" />
+  </message>
+  <message name="GetPopularTracksByArtistIdSoapIn">
+    <part name="parameters" element="tns:GetPopularTracksByArtistId" />
+  </message>
+  <message name="GetPopularTracksByArtistIdSoapOut">
+    <part name="parameters" element="tns:GetPopularTracksByArtistIdResponse" />
+  </message>
+  <message name="GetRecommendedAlbumsSoapIn">
+    <part name="parameters" element="tns:GetRecommendedAlbums" />
+  </message>
+  <message name="GetRecommendedAlbumsSoapOut">
+    <part name="parameters" element="tns:GetRecommendedAlbumsResponse" />
+  </message>
+  <message name="GetRecommendedTracksSoapIn">
+    <part name="parameters" element="tns:GetRecommendedTracks" />
+  </message>
+  <message name="GetRecommendedTracksSoapOut">
+    <part name="parameters" element="tns:GetRecommendedTracksResponse" />
+  </message>
+  <message name="GetStreamSoapIn">
+    <part name="parameters" element="tns:GetStream" />
+  </message>
+  <message name="GetStreamSoapOut">
+    <part name="parameters" element="tns:GetStreamResponse" />
+  </message>
+  <message name="GetTopAlbumsSoapIn">
+    <part name="parameters" element="tns:GetTopAlbums" />
+  </message>
+  <message name="GetTopAlbumsSoapOut">
+    <part name="parameters" element="tns:GetTopAlbumsResponse" />
+  </message>
+  <message name="GetTopTracksSoapIn">
+    <part name="parameters" element="tns:GetTopTracks" />
+  </message>
+  <message name="GetTopTracksSoapOut">
+    <part name="parameters" element="tns:GetTopTracksResponse" />
+  </message>
+  <message name="GetTrackByIdSoapIn">
+    <part name="parameters" element="tns:GetTrackById" />
+  </message>
+  <message name="GetTrackByIdSoapOut">
+    <part name="parameters" element="tns:GetTrackByIdResponse" />
+  </message>
+  <message name="GetTracksByAlbumIdSoapIn">
+    <part name="parameters" element="tns:GetTracksByAlbumId" />
+  </message>
+  <message name="GetTracksByAlbumIdSoapOut">
+    <part name="parameters" element="tns:GetTracksByAlbumIdResponse" />
+  </message>
+  <message name="GetTracksByCategoryIdSoapIn">
+    <part name="parameters" element="tns:GetTracksByCategoryId" />
+  </message>
+  <message name="GetTracksByCategoryIdSoapOut">
+    <part name="parameters" element="tns:GetTracksByCategoryIdResponse" />
+  </message>
+  <message name="GetTracksByCollectionIdSoapIn">
+    <part name="parameters" element="tns:GetTracksByCollectionId" />
+  </message>
+  <message name="GetTracksByCollectionIdSoapOut">
+    <part name="parameters" element="tns:GetTracksByCollectionIdResponse" />
+  </message>
+  <message name="GetUserIdByFacebookIdSoapIn">
+    <part name="parameters" element="tns:GetUserIdByFacebookId" />
+  </message>
+  <message name="GetUserIdByFacebookIdSoapOut">
+    <part name="parameters" element="tns:GetUserIdByFacebookIdResponse" />
+  </message>
+  <message name="GetUserIdsByFacebookIdsSoapIn">
+    <part name="parameters" element="tns:GetUserIdsByFacebookIds" />
+  </message>
+  <message name="GetUserIdsByFacebookIdsSoapOut">
+    <part name="parameters" element="tns:GetUserIdsByFacebookIdsResponse" />
+  </message>
+  <message name="RemoveAlbumFromFavoritesSoapIn">
+    <part name="parameters" element="tns:RemoveAlbumFromFavorites" />
+  </message>
+  <message name="RemoveAlbumFromFavoritesSoapOut">
+    <part name="parameters" element="tns:RemoveAlbumFromFavoritesResponse" />
+  </message>
+  <message name="RemoveArtistFromFavoritesSoapIn">
+    <part name="parameters" element="tns:RemoveArtistFromFavorites" />
+  </message>
+  <message name="RemoveArtistFromFavoritesSoapOut">
+    <part name="parameters" element="tns:RemoveArtistFromFavoritesResponse" />
+  </message>
+  <message name="RemovePlaylistByIdSoapIn">
+    <part name="parameters" element="tns:RemovePlaylistById" />
+  </message>
+  <message name="RemovePlaylistByIdSoapOut">
+    <part name="parameters" element="tns:RemovePlaylistByIdResponse" />
+  </message>
+  <message name="RemovePlaylistFromFavoritesSoapIn">
+    <part name="parameters" element="tns:RemovePlaylistFromFavorites" />
+  </message>
+  <message name="RemovePlaylistFromFavoritesSoapOut">
+    <part name="parameters" element="tns:RemovePlaylistFromFavoritesResponse" />
+  </message>
+  <message name="RemoveTrackFromFavoritesSoapIn">
+    <part name="parameters" element="tns:RemoveTrackFromFavorites" />
+  </message>
+  <message name="RemoveTrackFromFavoritesSoapOut">
+    <part name="parameters" element="tns:RemoveTrackFromFavoritesResponse" />
+  </message>
+  <message name="RemoveTracksFromPlaylistSoapIn">
+    <part name="parameters" element="tns:RemoveTracksFromPlaylist" />
+  </message>
+  <message name="RemoveTracksFromPlaylistSoapOut">
+    <part name="parameters" element="tns:RemoveTracksFromPlaylistResponse" />
+  </message>
+  <message name="RenamePlaylistByIdSoapIn">
+    <part name="parameters" element="tns:RenamePlaylistById" />
+  </message>
+  <message name="RenamePlaylistByIdSoapOut">
+    <part name="parameters" element="tns:RenamePlaylistByIdResponse" />
+  </message>
+  <message name="ReportPlaySoapIn">
+    <part name="parameters" element="tns:ReportPlay" />
+  </message>
+  <message name="ReportPlaySoapOut">
+    <part name="parameters" element="tns:ReportPlayResponse" />
+  </message>
+  <message name="SearchSoapIn">
+    <part name="parameters" element="tns:Search" />
+  </message>
+  <message name="SearchSoapOut">
+    <part name="parameters" element="tns:SearchResponse" />
+  </message>
+  <message name="SearchTrackSoapIn">
+    <part name="parameters" element="tns:SearchTrack" />
+  </message>
+  <message name="SearchTrackSoapOut">
+    <part name="parameters" element="tns:SearchTrackResponse" />
+  </message>
+  <portType name="PublicApiSoapSecure">
+    <operation name="AddAlbumToFavorites">
+      <documentation>Add an album to the list of favorites</documentation>
+      <input message="tns:AddAlbumToFavoritesSoapIn" />
+      <output message="tns:AddAlbumToFavoritesSoapOut" />
+    </operation>
+    <operation name="AddAlbumTracksToPlaylist">
+      <documentation>Add all tracks of an album to a playlist</documentation>
+      <input message="tns:AddAlbumTracksToPlaylistSoapIn" />
+      <output message="tns:AddAlbumTracksToPlaylistSoapOut" />
+    </operation>
+    <operation name="AddArtistToFavorites">
+      <documentation>Add an artist to the list of favorites</documentation>
+      <input message="tns:AddArtistToFavoritesSoapIn" />
+      <output message="tns:AddArtistToFavoritesSoapOut" />
+    </operation>
+    <operation name="AddPlaylist">
+      <documentation>Creates a new Playlist</documentation>
+      <input message="tns:AddPlaylistSoapIn" />
+      <output message="tns:AddPlaylistSoapOut" />
+    </operation>
+    <operation name="AddPlaylistToFavorites">
+      <documentation>Add a playlist to the list of favorites</documentation>
+      <input message="tns:AddPlaylistToFavoritesSoapIn" />
+      <output message="tns:AddPlaylistToFavoritesSoapOut" />
+    </operation>
+    <operation name="AddTracksToPlaylist">
+      <documentation>Add tracks to a playlist</documentation>
+      <input message="tns:AddTracksToPlaylistSoapIn" />
+      <output message="tns:AddTracksToPlaylistSoapOut" />
+    </operation>
+    <operation name="AddTrackToFavorites">
+      <documentation>Add a track to the list of favorites</documentation>
+      <input message="tns:AddTrackToFavoritesSoapIn" />
+      <output message="tns:AddTrackToFavoritesSoapOut" />
+    </operation>
+    <operation name="GetAlbumById">
+      <documentation>Get 1 Album by unique ID</documentation>
+      <input message="tns:GetAlbumByIdSoapIn" />
+      <output message="tns:GetAlbumByIdSoapOut" />
+    </operation>
+    <operation name="GetAlbumsByArtistId">
+      <documentation>Get the albums from an artist</documentation>
+      <input message="tns:GetAlbumsByArtistIdSoapIn" />
+      <output message="tns:GetAlbumsByArtistIdSoapOut" />
+    </operation>
+    <operation name="GetAlbumsByCategoryId">
+      <documentation>Get albums from a category</documentation>
+      <input message="tns:GetAlbumsByCategoryIdSoapIn" />
+      <output message="tns:GetAlbumsByCategoryIdSoapOut" />
+    </operation>
+    <operation name="GetAlbumsByCollectionId">
+      <documentation>Get albums from a collection</documentation>
+      <input message="tns:GetAlbumsByCollectionIdSoapIn" />
+      <output message="tns:GetAlbumsByCollectionIdSoapOut" />
+    </operation>
+    <operation name="GetArtistById">
+      <documentation>Get artist by specified ID</documentation>
+      <input message="tns:GetArtistByIdSoapIn" />
+      <output message="tns:GetArtistByIdSoapOut" />
+    </operation>
+    <operation name="GetEditorialPlaylists">
+      <documentation>Get editorial playlists</documentation>
+      <input message="tns:GetEditorialPlaylistsSoapIn" />
+      <output message="tns:GetEditorialPlaylistsSoapOut" />
+    </operation>
+    <operation name="GetFavoriteAlbums">
+      <documentation>Get user favorite albums</documentation>
+      <input message="tns:GetFavoriteAlbumsSoapIn" />
+      <output message="tns:GetFavoriteAlbumsSoapOut" />
+    </operation>
+    <operation name="GetFavoriteAlbumsByUserIds">
+      <documentation>Get favorite albums of the specified users</documentation>
+      <input message="tns:GetFavoriteAlbumsByUserIdsSoapIn" />
+      <output message="tns:GetFavoriteAlbumsByUserIdsSoapOut" />
+    </operation>
+    <operation name="GetFavoriteArtists">
+      <documentation>Get the user favorite albums</documentation>
+      <input message="tns:GetFavoriteArtistsSoapIn" />
+      <output message="tns:GetFavoriteArtistsSoapOut" />
+    </operation>
+    <operation name="GetFavoriteArtistsByUserIds">
+      <documentation>Get the favorite artists of the specified user ids</documentation>
+      <input message="tns:GetFavoriteArtistsByUserIdsSoapIn" />
+      <output message="tns:GetFavoriteArtistsByUserIdsSoapOut" />
+    </operation>
+    <operation name="GetFavoritePlaylists">
+      <documentation>Get the user favorite playlists</documentation>
+      <input message="tns:GetFavoritePlaylistsSoapIn" />
+      <output message="tns:GetFavoritePlaylistsSoapOut" />
+    </operation>
+    <operation name="GetFavoritePlaylistsByUserIds">
+      <documentation>Get the favorite playlists of the specified user ids</documentation>
+      <input message="tns:GetFavoritePlaylistsByUserIdsSoapIn" />
+      <output message="tns:GetFavoritePlaylistsByUserIdsSoapOut" />
+    </operation>
+    <operation name="GetFavoriteTracks">
+      <documentation>Get the user favorite tracks</documentation>
+      <input message="tns:GetFavoriteTracksSoapIn" />
+      <output message="tns:GetFavoriteTracksSoapOut" />
+    </operation>
+    <operation name="GetFavoriteTracksByUserIds">
+      <documentation>Get the favorite tracks of the specified user ids</documentation>
+      <input message="tns:GetFavoriteTracksByUserIdsSoapIn" />
+      <output message="tns:GetFavoriteTracksByUserIdsSoapOut" />
+    </operation>
+    <operation name="GetNewAlbums">
+      <documentation>Get new albums</documentation>
+      <input message="tns:GetNewAlbumsSoapIn" />
+      <output message="tns:GetNewAlbumsSoapOut" />
+    </operation>
+    <operation name="GetNewTracks">
+      <documentation>Get new tracks</documentation>
+      <input message="tns:GetNewTracksSoapIn" />
+      <output message="tns:GetNewTracksSoapOut" />
+    </operation>
+    <operation name="GetPlaylistById">
+      <documentation>Geta a playlist by specified Id</documentation>
+      <input message="tns:GetPlaylistByIdSoapIn" />
+      <output message="tns:GetPlaylistByIdSoapOut" />
+    </operation>
+    <operation name="GetPlaylists">
+      <documentation>Get the user Playlists</documentation>
+      <input message="tns:GetPlaylistsSoapIn" />
+      <output message="tns:GetPlaylistsSoapOut" />
+    </operation>
+    <operation name="GetPlaylistsByArtistId">
+      <documentation>Get playlists that include the specified artist</documentation>
+      <input message="tns:GetPlaylistsByArtistIdSoapIn" />
+      <output message="tns:GetPlaylistsByArtistIdSoapOut" />
+    </operation>
+    <operation name="GetPopularTracksByArtistId">
+      <documentation>Get the most popular tracks from an artist</documentation>
+      <input message="tns:GetPopularTracksByArtistIdSoapIn" />
+      <output message="tns:GetPopularTracksByArtistIdSoapOut" />
+    </operation>
+    <operation name="GetRecommendedAlbums">
+      <documentation>Get recommended albums</documentation>
+      <input message="tns:GetRecommendedAlbumsSoapIn" />
+      <output message="tns:GetRecommendedAlbumsSoapOut" />
+    </operation>
+    <operation name="GetRecommendedTracks">
+      <documentation>Get recommended tracks</documentation>
+      <input message="tns:GetRecommendedTracksSoapIn" />
+      <output message="tns:GetRecommendedTracksSoapOut" />
+    </operation>
+    <operation name="GetStream">
+      <documentation>Get a stream url for a track</documentation>
+      <input message="tns:GetStreamSoapIn" />
+      <output message="tns:GetStreamSoapOut" />
+    </operation>
+    <operation name="GetTopAlbums">
+      <documentation>Get the top editorial albums</documentation>
+      <input message="tns:GetTopAlbumsSoapIn" />
+      <output message="tns:GetTopAlbumsSoapOut" />
+    </operation>
+    <operation name="GetTopTracks">
+      <documentation>Get the top category tracks</documentation>
+      <input message="tns:GetTopTracksSoapIn" />
+      <output message="tns:GetTopTracksSoapOut" />
+    </operation>
+    <operation name="GetTrackById">
+      <documentation>Get track by specified Id</documentation>
+      <input message="tns:GetTrackByIdSoapIn" />
+      <output message="tns:GetTrackByIdSoapOut" />
+    </operation>
+    <operation name="GetTracksByAlbumId">
+      <documentation>Get the ttracks of an album</documentation>
+      <input message="tns:GetTracksByAlbumIdSoapIn" />
+      <output message="tns:GetTracksByAlbumIdSoapOut" />
+    </operation>
+    <operation name="GetTracksByCategoryId">
+      <documentation>Get tracks from a category</documentation>
+      <input message="tns:GetTracksByCategoryIdSoapIn" />
+      <output message="tns:GetTracksByCategoryIdSoapOut" />
+    </operation>
+    <operation name="GetTracksByCollectionId">
+      <documentation>Get tracks from a collection</documentation>
+      <input message="tns:GetTracksByCollectionIdSoapIn" />
+      <output message="tns:GetTracksByCollectionIdSoapOut" />
+    </operation>
+    <operation name="GetUserIdByFacebookId">
+      <documentation>Get the music box user Id by it's facebook Id</documentation>
+      <input message="tns:GetUserIdByFacebookIdSoapIn" />
+      <output message="tns:GetUserIdByFacebookIdSoapOut" />
+    </operation>
+    <operation name="GetUserIdsByFacebookIds">
+      <documentation>Get music box user ids by facebook ids</documentation>
+      <input message="tns:GetUserIdsByFacebookIdsSoapIn" />
+      <output message="tns:GetUserIdsByFacebookIdsSoapOut" />
+    </operation>
+    <operation name="RemoveAlbumFromFavorites">
+      <documentation>Remove an album from favorites</documentation>
+      <input message="tns:RemoveAlbumFromFavoritesSoapIn" />
+      <output message="tns:RemoveAlbumFromFavoritesSoapOut" />
+    </operation>
+    <operation name="RemoveArtistFromFavorites">
+      <documentation>Remove an artist from favorites</documentation>
+      <input message="tns:RemoveArtistFromFavoritesSoapIn" />
+      <output message="tns:RemoveArtistFromFavoritesSoapOut" />
+    </operation>
+    <operation name="RemovePlaylistById">
+      <documentation>Remove a playlist</documentation>
+      <input message="tns:RemovePlaylistByIdSoapIn" />
+      <output message="tns:RemovePlaylistByIdSoapOut" />
+    </operation>
+    <operation name="RemovePlaylistFromFavorites">
+      <documentation>Remove a playlist from the list of favorites</documentation>
+      <input message="tns:RemovePlaylistFromFavoritesSoapIn" />
+      <output message="tns:RemovePlaylistFromFavoritesSoapOut" />
+    </operation>
+    <operation name="RemoveTrackFromFavorites">
+      <documentation>Remove a track from favorites</documentation>
+      <input message="tns:RemoveTrackFromFavoritesSoapIn" />
+      <output message="tns:RemoveTrackFromFavoritesSoapOut" />
+    </operation>
+    <operation name="RemoveTracksFromPlaylist">
+      <documentation>Remove tracks from a playist by specified playlist indexes</documentation>
+      <input message="tns:RemoveTracksFromPlaylistSoapIn" />
+      <output message="tns:RemoveTracksFromPlaylistSoapOut" />
+    </operation>
+    <operation name="RenamePlaylistById">
+      <documentation>Renames a playlist</documentation>
+      <input message="tns:RenamePlaylistByIdSoapIn" />
+      <output message="tns:RenamePlaylistByIdSoapOut" />
+    </operation>
+    <operation name="ReportPlay">
+      <documentation>Reports a track that was streamed for mora than 50% ofm its duration. The ReportKey parameters is the one obtained through the GetStream operation.</documentation>
+      <input message="tns:ReportPlaySoapIn" />
+      <output message="tns:ReportPlaySoapOut" />
+    </operation>
+    <operation name="Search">
+      <documentation>Search albums, artists and tracks</documentation>
+      <input message="tns:SearchSoapIn" />
+      <output message="tns:SearchSoapOut" />
+    </operation>
+    <operation name="SearchTrack">
+      <documentation>Search a track by track name and artist name</documentation>
+      <input message="tns:SearchTrackSoapIn" />
+      <output message="tns:SearchTrackSoapOut" />
+    </operation>
+  </portType>
+  <binding name="PublicApiSoapSecure" type="tns:PublicApiSoapSecure">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="AddAlbumToFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddAlbumToFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddAlbumTracksToPlaylist">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddAlbumTracksToPlaylist" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddArtistToFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddArtistToFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPlaylist">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddPlaylist" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPlaylistToFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddPlaylistToFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddTracksToPlaylist">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddTracksToPlaylist" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddTrackToFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/AddTrackToFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAlbumById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetAlbumById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAlbumsByArtistId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetAlbumsByArtistId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAlbumsByCategoryId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetAlbumsByCategoryId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAlbumsByCollectionId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetAlbumsByCollectionId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetArtistById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetArtistById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetEditorialPlaylists">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetEditorialPlaylists" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteAlbums">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteAlbums" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteAlbumsByUserIds">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteAlbumsByUserIds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteArtists">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteArtists" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteArtistsByUserIds">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteArtistsByUserIds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoritePlaylists">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoritePlaylists" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoritePlaylistsByUserIds">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoritePlaylistsByUserIds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteTracks">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteTracks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFavoriteTracksByUserIds">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetFavoriteTracksByUserIds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNewAlbums">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetNewAlbums" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNewTracks">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetNewTracks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPlaylistById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetPlaylistById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPlaylists">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetPlaylists" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPlaylistsByArtistId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetPlaylistsByArtistId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPopularTracksByArtistId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetPopularTracksByArtistId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRecommendedAlbums">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetRecommendedAlbums" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRecommendedTracks">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetRecommendedTracks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStream">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetStream" style="document" />
+      <input>
+        <soap:header message="tns:ESBCredentialsSoapIn" part="ESBCredentials" use="literal" />
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopAlbums">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTopAlbums" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopTracks">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTopTracks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTrackById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTrackById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTracksByAlbumId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTracksByAlbumId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTracksByCategoryId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTracksByCategoryId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTracksByCollectionId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetTracksByCollectionId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserIdByFacebookId">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetUserIdByFacebookId" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserIdsByFacebookIds">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/GetUserIdsByFacebookIds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveAlbumFromFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemoveAlbumFromFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveArtistFromFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemoveArtistFromFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemovePlaylistById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemovePlaylistById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemovePlaylistFromFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemovePlaylistFromFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveTrackFromFavorites">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemoveTrackFromFavorites" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveTracksFromPlaylist">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RemoveTracksFromPlaylist" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RenamePlaylistById">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/RenamePlaylistById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReportPlay">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/ReportPlay" style="document" />
+      <input>
+        <soap:header message="tns:ESBCredentialsSoapIn" part="ESBCredentials" use="literal" />
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Search">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/Search" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchTrack">
+      <soap:operation soapAction="http://services.sapo.pt/Music/OnDemand/PublicApi/SearchTrack" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PublicApi">
+    <documentation>Public Api for music box service</documentation>
+    <port name="PublicApiSoapSecure" binding="tns:PublicApiSoapSecure">
+      <soap:address location="https://services.bk.sapo.pt/Music/OnDemand/PublicApi" />
+    </port>
+  </service>
+</definitions>

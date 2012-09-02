@@ -1,0 +1,492 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.sapo.pt/Music/OnDemand/PublicApi" elementFormDefault="qualified" targetNamespace="http://services.sapo.pt/Music/OnDemand/PublicApi">
+  <complexType name="MBCredentials">
+    <annotation>
+      <documentation xml:lang="en">Music box account credentials</documentation>
+    </annotation>
+    <sequence>
+      <element name="MBUsername" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Music box account username</documentation>
+        </annotation>
+      </element>
+      <element name="MBPassword" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Music box account password</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="AddAlbumToFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RequestStatus">
+    <sequence>
+      <element name="ErrorCode" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="ErrorDesc" type="string" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AddAlbumTracksToPlaylistResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AddArtistToFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AddPlaylistResult">
+    <sequence>
+      <element name="PlaylistId" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AddPlaylistToFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="TrackIdList">
+    <sequence>
+      <element name="TrackId" type="int" minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="AddTracksToPlaylistResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AddTrackToFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetAlbumByIdResult">
+    <annotation>
+      <documentation xml:lang="en">GetAlbumById result</documentation>
+    </annotation>
+    <sequence>
+      <element name="Album" type="tns:Album" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="Album">
+    <annotation>
+      <documentation xml:lang="en">Album </documentation>
+    </annotation>
+    <sequence>
+      <element name="AlbumName" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album title</documentation>
+        </annotation>
+      </element>
+      <element name="AlbumId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="AlbumType" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album type: (single, EP, etc)</documentation>
+        </annotation>
+      </element>
+      <element name="ArtistId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="ArtistName" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="Genre" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="Duration" type="int" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album duration in seconds</documentation>
+        </annotation>
+      </element>
+      <element name="LargeAlbumCover" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album cover image (180x180)</documentation>
+        </annotation>
+      </element>
+      <element name="NumberOfTracks" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="NumberOfVolumes" type="int" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Number of volumes / discs</documentation>
+        </annotation>
+      </element>
+      <element name="RecordLabel" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="RecordProvider" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="MediumAlbumCover" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album cover (120x120)</documentation>
+        </annotation>
+      </element>
+      <element name="SmallAlbumCover" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Album cover (90x90)</documentation>
+        </annotation>
+      </element>
+      <element name="ReleaseYear" type="int" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetAlbumsByArtistIdResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="AlbumList">
+    <annotation>
+      <documentation xml:lang="en">List of albums</documentation>
+    </annotation>
+    <sequence>
+      <element name="Album" type="tns:Album" minOccurs="0" maxOccurs="unbounded">
+        <annotation>
+          <documentation xml:lang="en">List of Albums</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="GetAlbumsByCategoryIdResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetAlbumsByCollectionIdResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetArtistByIdResult">
+    <sequence>
+      <element name="Artist" type="tns:Artist" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="Artist">
+    <annotation>
+      <documentation xml:lang="en">Artist</documentation>
+    </annotation>
+    <sequence>
+      <element name="ArtistName" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="ArtistId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="ArtistBiography" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="ArtistInfo" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Link" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Photos" type="tns:ArtistPhotos" minOccurs="0" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="ArtistPhotos">
+    <sequence>
+      <element name="Small" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Medium" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Large" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="ExtraLarge" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Mega" type="string" minOccurs="0" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetEditorialPlaylistsResult">
+    <sequence>
+      <element name="PlaylistList" type="tns:PlaylistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="PlaylistList">
+    <annotation>
+      <documentation xml:lang="en">List os playlists</documentation>
+    </annotation>
+    <sequence>
+      <element name="Playlist" type="tns:Playlist" minOccurs="0" maxOccurs="unbounded">
+        <annotation>
+          <documentation xml:lang="en">List of Playlists</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Playlist">
+    <annotation>
+      <documentation xml:lang="en">Playlist</documentation>
+    </annotation>
+    <sequence>
+      <element name="PlaylistId" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="PlaylistTitle" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="NumberOfTracks" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="OwnerArtistId" type="int" minOccurs="0" maxOccurs="1" />
+      <element name="Duration" type="int" minOccurs="0" maxOccurs="1" />
+      <element name="Image" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="OwnerUserId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="Description" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="TrackList" type="tns:TrackList" minOccurs="0" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="TrackList">
+    <annotation>
+      <documentation xml:lang="en">List of tracks</documentation>
+    </annotation>
+    <sequence>
+      <element name="Track" type="tns:Track" minOccurs="0" maxOccurs="unbounded">
+        <annotation>
+          <documentation xml:lang="en">List of tracks</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Track">
+    <annotation>
+      <documentation xml:lang="en">Track</documentation>
+    </annotation>
+    <sequence>
+      <element name="TrackId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="TrackName" type="string" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Track title</documentation>
+        </annotation>
+      </element>
+      <element name="ArtistName" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="ArtistId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="AlbumId" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="AlbumName" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="Duration" type="int" minOccurs="1" maxOccurs="1">
+        <annotation>
+          <documentation xml:lang="en">Track duration in seconds</documentation>
+        </annotation>
+      </element>
+      <element name="SmallAlbumCover" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="MediumAlbumCover" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="LargeAlbumCover" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="AlbumNumberOfVolumes" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="VolumeIndex" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="TrackIndex" type="int" minOccurs="1" maxOccurs="1" />
+      <element name="RecordLabel" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="RecordProvider" type="string" minOccurs="1" maxOccurs="1" />
+      <element name="PreviewUrl" type="string" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteAlbumsResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="UserIdList">
+    <sequence>
+      <element name="UserId" type="int" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteAlbumsByUserIdsResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteArtistsResult">
+    <sequence>
+      <element name="ArtistList" type="tns:ArtistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="ArtistList">
+    <annotation>
+      <documentation xml:lang="en">List of artists</documentation>
+    </annotation>
+    <sequence>
+      <element name="Artist" type="tns:Artist" minOccurs="0" maxOccurs="unbounded">
+        <annotation>
+          <documentation xml:lang="en">List of artists</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteArtistsByUserIdsResult">
+    <sequence>
+      <element name="ArtistList" type="tns:ArtistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoritePlaylistsResult">
+    <sequence>
+      <element name="PlaylistList" type="tns:PlaylistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoritePlaylistsByUserIdsResult">
+    <sequence>
+      <element name="PlaylistList" type="tns:PlaylistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteTracksResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetFavoriteTracksByUserIdsResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetNewAlbumsResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetNewTracksResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPlaylistByIdResult">
+    <sequence>
+      <element name="Playlist" type="tns:Playlist" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPlaylistsResult">
+    <sequence>
+      <element name="PlaylistList" type="tns:PlaylistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPlaylistsByArtistIdResult">
+    <sequence>
+      <element name="PlaylistList" type="tns:PlaylistList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPopularTracksByArtistIdResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetRecommendedAlbumsResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetRecommendedTracksResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetStreamResult">
+    <sequence>
+      <element name="StreamUrl" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="ReportKey" type="string" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetTopAlbumsResult">
+    <sequence>
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetTopTracksResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetTrackByIdResult">
+    <sequence>
+      <element name="Track" type="tns:Track" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetTracksByAlbumIdResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetTracksByCategoryIdResult">
+    <sequence>
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GetUserIdByFacebookIdResult">
+    <sequence>
+      <element name="UserId" type="int" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="FacebookIdList">
+    <sequence>
+      <element name="FacebookId" type="long" minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="GetUserIdsByFacebookIdsResult">
+    <sequence>
+      <element name="UserIdList" type="tns:UserIdList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RemoveAlbumFromFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RemoveArtistFromFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RemovePlaylistByIdResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="0" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RemovePlaylistFromFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RemoveTrackFromFavoritesResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="PlaylistIndexList">
+    <sequence>
+      <element name="PlaylistIndex" type="int" minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  <complexType name="RemoveTracksFromPlaylistResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="RenamePlaylistByIdResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="ReportPlayResult">
+    <sequence>
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="SearchResult">
+    <annotation>
+      <documentation xml:lang="en">Search Result</documentation>
+    </annotation>
+    <sequence>
+      <element name="ArtistList" type="tns:ArtistList" minOccurs="1" maxOccurs="1" />
+      <element name="AlbumList" type="tns:AlbumList" minOccurs="1" maxOccurs="1" />
+      <element name="TrackList" type="tns:TrackList" minOccurs="1" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="SearchTrackResult">
+    <annotation>
+      <documentation xml:lang="en">Search Track Result</documentation>
+    </annotation>
+    <sequence>
+      <element name="Track" type="tns:Track" minOccurs="0" maxOccurs="1" />
+      <element name="Status" type="tns:RequestStatus" minOccurs="1" maxOccurs="1" />
+    </sequence>
+  </complexType>
+</schema>
