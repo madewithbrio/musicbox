@@ -17,6 +17,7 @@ extends Sapo_Controller
 
 	protected function renderDefault()
 	{
-		print "Send widget";
+		header("location: index.html");
+		exit;
 	}
 }
