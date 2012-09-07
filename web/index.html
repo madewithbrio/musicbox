@@ -25,11 +25,11 @@
     <link rel="shortcut icon" href="/static/img/l/apple-touch-icon.png">
 
     <!-- iOS web app, delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-    <!--
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    -->
-    <!-- <script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"/static/img/startup-tablet-landscape.png":"/static/img/startup-tablet-portrait.png"}else{a=window.devicePixelRatio===2?"/static/img/startup-retina.png":"/static/img/startup.png"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script> -->
+
+    <script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"/static/img/startup-tablet-landscape.png":"/static/img/startup-tablet-portrait.png"}else{a=window.devicePixelRatio===2?"/static/img/startup-retina.png":"/static/img/startup.png"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script>
 
     <!-- The script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
     <!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> -->
@@ -49,7 +49,7 @@
     <script src="/static/js/modernizr.min.js"></script>
 </head>
 
-<body class="has_playlist">
+<body class="nocallout notextselection has_playlist">
 
     <nav id="menu" class="scrollable">
         <a href="/" class="logo">music box</a>
@@ -77,223 +77,384 @@
         <nav class="system_menu">
             <ul>
                 <li class="menu_toggle"><a href="#menu">Menu</a></li>
-                <li class="search_toggle"><a href="#search">Search</a></li>
+                <li class="back_link"><a href="#back">Voltar</a></li>
+                <li class="search_toggle"><a href="#search">Pesquisa</a></li>
                 <li class="user_toggle"><a href="#user">User</a></li>
             </ul>
         </nav>
     </header>
 
     <div id="main" class="scrollable">
-    <div id="dashboard" class="panel">
-        <div class="home">
-            <ul class="list dashboard_lists clearfix">
-                <li>
-                    <h1>Login</h1>
-                    <form action="/login" method="POST" id="" class="login_form">
-                        <input type="username" name="username" class="username" placeholder="username" value="" />
-                        <input type="password" name="password" class="password" placeholder="password" value="" />
-                        <input type="submit" value="Entrar" class="button" />
-                    </form>
-                </li>
-                <li>
-                    <h1>Novidades</h1>
-                    <ul class="list album_list clearfix">
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo comprido e chato</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo com provavelmente duas linhas</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h1>Recomendamos</h1>
-                    <ul class="list album_list clearfix">
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="clearfix">
-                            <a href="#">
-                                <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                                <div class="details">
-                                <p class="title">Título que pode ser longo</p>
-                                <p class="band">Nome da banda</p>
-                                <p class="tracks">12 faixas</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h1>Playlists</h1>
-                </li>
-                <li>
-                    <h1>Géneros</h1>
-                </li>
-                <li>
-                    <h1>Temáticas</h1>
-                </li>
-                <li>
-                    <h1>Em escuta</h1>
-                </li>
-            </ul>
+
+        <div id="dashboard" class="panel">
+            <div class="home">
+                <ul class="list dashboard_lists clearfix">
+                    <li class="login">
+                        <h1>Login</h1>
+                        <form action="/login" method="POST" id="" class="login_form">
+                            <input type="username" name="username" class="username" placeholder="username" value="" />
+                            <input type="password" name="password" class="password" placeholder="password" value="" />
+                            <input type="submit" value="Entrar" class="button" />
+                        </form>
+                    </li>
+                    <li>
+                        <h1>Novidades</h1>
+                        <ul class="list album_list clearfix">
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="http://www.lorempixum.com/200/200" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="http://www.lorempixum.com/201/201" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo comprido e chato</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="http://www.lorempixum.com/202/202" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo com provavelmente duas linhas</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="http://www.lorempixum.com/203/203" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="http://www.lorempixum.com/204/204" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h1>Recomendamos</h1>
+                        <ul class="list album_list clearfix">
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="clearfix">
+                                <a href="#">
+                                    <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                                    <div class="details">
+                                    <p class="title">Título que pode ser longo</p>
+                                    <p class="band">Nome da banda</p>
+                                    <p class="tracks">12 faixas</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h1>Playlists</h1>
+                    </li>
+                    <li>
+                        <h1>Géneros</h1>
+                    </li>
+                    <li>
+                        <h1>Temáticas</h1>
+                    </li>
+                    <li>
+                        <h1>Em escuta</h1>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div id="search">
-        <form action="/search" method="POST" id="" class="search_form">
-            <input type="search" name="query" class="query" placeholder="pesquisa" value="" />
-            <input type="submit" value="Pesquisar" />
-        </form>
-        <ul class="search_results_list">
+        <div id="search">
+            <form action="/search" method="POST" id="" class="search_form">
+                <input type="search" name="query" class="query" placeholder="pesquisa" value="" />
+                <input type="submit" value="Pesquisar" />
+            </form>
             <ul class="search_results_list">
-            </ul>
-    </div>
+                <ul class="search_results_list">
+                </ul>
+        </div>
 
-    <div class="album_detail">
-        <header class="clearfix">
-            <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-            <h1 class="title">Título do álbum com duas linhas</h1>
-            <p class="band">Nome da banda</p>
-        </header>
-        <ul class="list album_tracklist">
-            <li>
-                <a href="#">
-                    <p class="track_nr">01</p>
-                    <p class="title ellipsis">Título da música</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p class="track_nr">02</p>
-                    <p class="title ellipsis">Título da música</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p class="track_nr">03</p>
-                    <p class="title ellipsis">Título da música</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p class="track_nr">04</p>
-                    <p class="title ellipsis">Título da música</p>
-                </a>
-            </li>
-        </ul>
-    </div>
+
+        <!-- ALBUM DETAIL -->
+        <!-- ALBUM DETAIL -->
+        <!-- ALBUM DETAIL -->
+        <div class="album_detail">
+            
+            <header class="clearfix">
+                <a href="#" class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></a>
+                <div class="details">
+                    <p class="band">Nome da banda</p>
+                    <p class="title">Título do álbum com duas linhas</p>
+                    <p class="metadata ellipsis">
+                        <span class="genre">Reggae</span>
+                        <span class="nr_tracks"> - 10 músicas</span>
+                        <span class="duration">(45:06)</span>
+                    </p>
+                    <p class="metadata ellipsis">
+                        <span class="year">2009</span>
+                        <span class="publisher">Nome da merda de editora</span>
+                    </p>
+                </div>
+            </header>
+            
+            <ul class="buttons icon_buttons clearfix">
+                <!--li class="play"><a href="#">Tocar</a></li>
+                <li class="queue_next"><a href="#">Tocar a seguir</a></li>
+                <li class="queue_last"><a href="#">Adicionar ao final</a></li>
+                <li class="favorite"><a href="#">Adicionar aos favoritos</a></li>
+                <li class="share"><a href="#">Partilhar</a></li-->
+                <li class="play"><a href="#" title="Tocar" class="button"><i class="icon-play"></i></a></li>
+                <li class="queue_next"><a href="#" title="Tocar a seguir" class="button"><i class="icon-indent-left"></i></a></li>
+                <li class="queue_last"><a href="#" title="Tocar no final" class="button"><i class="icon-indent-right"></i></a></li>
+                <li class="favorite"><a href="#" title="Adicionar aos favoritos" class="button"><i class="icon-star"></i></a></li>
+                <li class="share"><a href="#" title="Partilhar" class="button"><i class="icon-share-alt"></i></a></li>
+            </ul>
+
+            <ul class="list tracklist album_tracklist clearfix">
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">01</p>
+                        <p class="title">Título da música que pode ter duas linhas</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">02</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">03</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">04</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">05</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">06</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">07</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">08</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">09</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#toggle_options">
+                        <p class="track_nr">10</p>
+                        <p class="title ellipsis">Título da música</p>
+                        <p class="duration">02:33</p>
+                    </a>
+                    <ul class="options buttons icon_buttons clearfix">
+                        <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+                        <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
+                        <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
+                        <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
+                        <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- ARTIST DETAIL -->
+        <!-- ARTIST DETAIL -->
+        <!-- ARTIST DETAIL -->
+        <div class="artist_detail">
+            
+            <header class="clearfix">
+                <div class="thumb"><img src="http://lorempixel.com/320/140/" alt="" /></div>
+                <p class="band">The Independent Music Machine</p>
+            </header>
+
+        </div>
 
     </div>
 
     <footer>
         <p class="player_tip">Playlist vazia</p>
-        <a href="#toggle_player" class="mini_player">
-            <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+        <a href="#toggle_player" class="mini_player loading">
+            <div class="thumb"><img src="http://lorempixel.com/50/50" alt="" /></div>
             <div class="details">
-                <p class="title ellipsis">Título da música</p>
-                <p class="band ellipsis">Nome da bandap</p>
+                <p class="title ellipsis">Título da música comprido até dizer chega</p>
+                <p class="band ellipsis">Nome da banda</p>
             </div>
             <nav class="time_bars">
                 <div class="bar buffered"></div>
@@ -303,22 +464,16 @@
             </nav>
         </a>
         <div class="player">
-            <nav class="system_menu">
-                <h1>Em escuta</h1>
-                <ul>
-                    <li class="close"><a href="#toggle_player">Close</a></li>
-                </ul>
-            </nav>
-            <ul class="list playlist scrollable">
-                <li class="current_track">
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum que pode ser longo<span></p>
-                        </div>
-                    </a>
-                </li>
+            <header>
+                <nav class="system_menu">
+                    <h1>Em escuta</h1>
+                    <ul>
+                        <li class="clear"><a href="#clear_playlist">Clear Playlist</a></li>
+                        <li class="close"><a href="#toggle_player">Close</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <ul id="playlist" class="list tracklist scrollable">
                 <li>
                     <a href="#">
                         <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
@@ -326,6 +481,21 @@
                             <p class="title ellipsis">Título da música</p>
                             <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
                         </div>
+                    </a>
+                </li>
+                <li class="current_track">
+                    <a href="#">
+                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+                        <div class="details">
+                            <p class="title ellipsis">Título da música</p>
+                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum que pode ser longo<span></p>
+                        </div>
+                        <nav class="time_bars">
+                            <div class="bar buffered"></div>
+                            <div class="bar elapsed_time"></div>
+                            <p class="timer elapsed_time_counter">2:33</p>
+                            <p class="timer total_time">4:12</p>
+                        </nav>
                     </a>
                 </li>
                 <li>
@@ -393,7 +563,7 @@
                 </li>
             </ul>
             <nav class="controls">
-                <ul>
+                <ul class="clearfix">
                     <li class="shuffle"><a href="#toggle_shuffle">Shuffle</a></li>
                     <li class="previous"><a href="#previous">Previous</a></li>
                     <li class="play_pause play"><a href="#toggle_play">Play</a></li>
@@ -414,8 +584,9 @@
   <script>window.jQuery || document.write('<script src="/static/js/jquery-1.7.1.min.js"><\/script>')</script>
 
   <!-- scripts concatenated and minified via ant build script-->
+  <script src="/static/js/helper.js"></script>
   <script src="/static/js/script.js"></script>
-   <script src="/static/js/service.js"></script>
+  <script src="/static/js/service.js"></script>
   <!-- end scripts-->
 
   <!-- Debugger - remove for production -->

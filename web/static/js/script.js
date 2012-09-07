@@ -1,9 +1,13 @@
 $(document).ready(function() {
 	//$(':root').addClass(( "ontouchstart" in window ) ? 'touch' : 'no-touch');
 
+	//$(":root > body").css({height: '2000px'});
+	//setTimeout(function() { window.scrollTo(0,1); }, 2000);
 
-	$('#app > footer').css({top: (window.innerHeight-54)})
-
+	//$('#app > footer').css({top: (window.innerHeight-54)})
+	$('#main').css({height: (window.innerHeight-50-50)});
+	$('#playlist').css({height: (window.innerHeight-50-50)});
+	$('#app > footer').css({height: (window.innerHeight)});
 
 	$('a[href="#search"]').bind('click', function(e){
 		e.preventDefault();
@@ -28,14 +32,26 @@ $(document).ready(function() {
 		$('.controls .play_pause').toggleClass('play');
 	});
 
+	$('a[href="#clear_playlist"]').bind('click', function(e){
+		e.preventDefault();
+		var answer = window.confirm("Tem a certeza que deseja limpar a sua playlist?")
+		if (answer) {
+			$('.playlist').hide();
+			$(':root > body').removeClass('has_playlist');
+		}
+		else {
+			return;
+		}
+	});
+
 	$('a[href="#toggle_player"]').bind('click', function(e){
 		e.preventDefault();
 		if ($(':root > body').hasClass('menu_mode')) {
 			return;
 		}
-		var translation = -($('#main').height() + $('#app > header').height());
-		if ($(':root > body').hasClass('player_mode')) {
-			translation = 0;
+		var translation = 0;
+		if (!$(':root > body').hasClass('player_mode')) {
+			translation = -($('#main').height() + $('#app > header').height());
 		}
 		$(':root > body').toggleClass('player_mode');
 		$('#app > footer').css({'-webkit-transform': 'translate3d(0,' + translation + 'px,0)'});
@@ -59,6 +75,13 @@ $(document).ready(function() {
 		} else {
 			parent.addClass('active');
 		}
+	});
+
+	$('a[href="#toggle_options"]').bind('click', function(e){
+		e.preventDefault();
+		var isActive = $(this).parent().hasClass('active');
+		$('.tracklist li.active').removeClass('active');
+		if (!isActive) $(this).parent().addClass('active');
 	});
 
 
