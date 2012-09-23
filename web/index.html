@@ -578,7 +578,38 @@
 
     </div> <!-- app -->
 
+    <script type="text/mustache" data-element="template" data-name="album_list_item">
+    <li class="clearfix">
+        <a href="#">
+            <div class="thumb"><img src="http://www.lorempixum.com/200/200" alt="" /></div>
+            <div class="details">
+            <p class="title">Título que pode ser longo</p>
+            <p class="band">Nome da banda</p>
+            <p class="tracks">12 faixas</p>
+            </div>
+        </a>
+    </li>
+    </script>
 
+    <script type="text/mustache" data-element="template" data-name="playlist_list_item">
+    <li {{#is_playing}}class="current_track"{{/is_playing}}>
+        <a href="#">
+            <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
+            <div class="details">
+                <p class="title ellipsis">Título da música</p>
+                <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum que pode ser longo<span></p>
+            </div>
+            {{#is_playing}}
+            <nav class="time_bars">
+                <div class="bar buffered"></div>
+                <div class="bar elapsed_time"></div>
+                <p class="timer elapsed_time_counter">2:33</p>
+                <p class="timer total_time">4:12</p>
+            </nav>
+            {{/is_playing}}
+        </a>
+    </li>
+    </script>
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
@@ -586,6 +617,7 @@
   <script>window.jQuery || document.write('<script src="/static/js/jquery-1.7.1.min.js"><\/script>')</script>
 
   <!-- scripts concatenated and minified via ant build script-->
+  <script src="/static/js/mustache.js"></script>
   <script src="/static/js/helper.js"></script>
   <script src="/static/js/script.js"></script>
   <script src="/static/js/service.js"></script>

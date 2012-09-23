@@ -83,6 +83,29 @@ $(document).ready(function() {
 		$('.tracklist li.active').removeClass('active');
 		if (!isActive) $(this).parent().addClass('active');
 	});
-
-
 });
+
+
+(function(scope){
+	var exportObj = {}, partialTemplates = {};
+
+	exportObj.getParticalTemplate = function(name) {
+		if (typeof name === "string" && typeof partialTemplates[name] === "string") { return partialTemplates[name] }
+		else if (typeof name === "string") throw "template not defined";
+		return partialTemplates;
+	};
+
+	exportObj.garbagePartialTemplates = function() {
+		var templates = document.querySelectorAll('script[data-element="template"][type="text/mustache"]');
+		templates.forEach = [].forEach;
+		templates.forEach(function(element) {
+			var name = element.getAttribute('data-name');
+			partialTemplates[name] = element.innerHTML;
+		});
+	}
+
+	$(document).ready(function(){
+		exportObj.garbagePartialTemplates();
+	});
+	scope.MusicBox = exportObj;
+})(window)
