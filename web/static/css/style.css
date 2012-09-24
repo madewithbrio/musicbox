@@ -290,6 +290,9 @@ a.button {color:#999;}
 */
 
 
+/** CONTEXT **/
+body.context_login .system_menu {display:none;}
+body.context_login > #app > footer {display:none;}
 
 
 
@@ -422,10 +425,11 @@ a.button {color:#999;}
 
 /* MAIN */
 #main {/*position:absolute;top:50px;right:0;bottom:54px;left:0;*/background:#EEE;}
-.home {padding:10px;display:none;}
+#main > div {display:none;}
+#main > div.active {display:block;}
+.home, .login {padding:10px;}
 .dashboard_lists {width:700%;}
 .dashboard_lists > li {float:left;width:260px;margin:0 30px 0 0;}
-.dashboard_lists > li.login {display:none;}
 
 
 .tracklist li {overflow:hidden;}
@@ -464,7 +468,7 @@ a.button {color:#999;}
 
 
 /* ARTIST DETAIL */
-.artist_detail {display:none;}
+.artist_detail {}
 .artist_detail header {position:relative;}
 .artist_detail header .thumb {}
 .artist_detail header .thumb img {}

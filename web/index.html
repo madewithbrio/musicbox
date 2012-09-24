@@ -49,7 +49,7 @@
     <script src="/static/js/modernizr.min.js"></script>
 </head>
 
-<body class="nocallout notextselection has_playlist">
+<body class="nocallout notextselection has_playlist context_login">
 
     <nav id="menu" class="scrollable">
         <a href="/" class="logo">music box</a>
@@ -87,18 +87,18 @@
     </header>
 
     <div id="main" class="scrollable">
-
+        <div id="login" class="login active">
+            <h1>Login</h1>
+            <form action="/login" method="POST" id="" class="login_form">
+                <input type="username" name="username" class="username" placeholder="username" value="" />
+                <input type="password" name="password" class="password" placeholder="password" value="" />
+                <input type="submit" value="Entrar" class="button" />
+            </form>
+        </div>
         <div id="dashboard" class="panel">
             <div class="home">
                 <ul class="list dashboard_lists clearfix">
-                    <li class="login">
-                        <h1>Login</h1>
-                        <form action="/login" method="POST" id="" class="login_form">
-                            <input type="username" name="username" class="username" placeholder="username" value="" />
-                            <input type="password" name="password" class="password" placeholder="password" value="" />
-                            <input type="submit" value="Entrar" class="button" />
-                        </form>
-                    </li>
+                    
                     <li>
                         <h1>Novidades</h1>
                         <ul class="list album_list clearfix">
