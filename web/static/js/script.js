@@ -83,6 +83,236 @@ $(document).ready(function() {
 		$('.tracklist li.active').removeClass('active');
 		if (!isActive) $(this).parent().addClass('active');
 	});
-
-
 });
+
+/**
+ *  Main object
+ */
+(function(scope){
+	var exportObj = {}, partialTemplates = {};
+
+	exportObj.getParticalTemplate = function(name) {
+		if (typeof name === "string" && typeof partialTemplates[name] === "string") { return partialTemplates[name] }
+		else if (typeof name === "string") throw "template not defined";
+		return partialTemplates;
+	};
+
+	exportObj.garbagePartialTemplates = function() {
+		var templates = document.querySelectorAll('script[data-element="template"][type="text/mustache"]');
+		templates.forEach = [].forEach;
+		templates.forEach(function(element) {
+			var name = element.getAttribute('data-name');
+			partialTemplates[name] = element.innerHTML;
+		});
+	};
+
+	exportObj.register = function(namespace, module) {
+		var namespaces = namespace.split("."), i, b;
+		for (i = 0; i <= namespaces.length;++i) {
+			b = namespaces.slice(0, i+1).join('\'][\'');
+			if (i < namespaces.length) {
+				eval('if (typeof exportObj[\''+b+'\'] === \'undefined\') { exportObj[\''+b+'\'] = {}; }');
+			} else {
+				eval('exportObj[\''+b+'\'] = module');
+			}
+		}
+	};
+
+	$(document).ready(function(){
+		exportObj.garbagePartialTemplates();
+	});
+
+	scope.MusicBox = exportObj;
+})(window);
+
+/**
+ *  Service Auth proxy
+ */
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Service.Auth', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var service_interface = {},
+		service_endpoint = "/auth";
+
+	var call = function(parameters, callback) {
+		var result;
+		var async = typeof callback === "function";
+		if (!async) callback = function(data){result=data;};
+
+		var xhr = $.ajax({
+			type: "POST",
+			async: async,
+			url: service_endpoint,
+			data: parameters,
+			success: callback,
+			dataType: 'json'
+		});
+		return result;
+	};
+
+	service_interface.login = function(username, password, callback) {
+		return call({username: username, password: password}, callback);
+	};
+	return service_interface;
+})());
+
+/**
+ *  Service Content proxy
+ */
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Service.Content', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var service_interface = {},
+		service_endpoint = "/content";
+
+	var call = function(method, parameters, callback) {
+		var result;
+		var async = typeof callback === "function";
+		if (!async) callback = function(data){result=data;};
+
+		var callbackProxy = function(data) {
+			if (data.Status.ErrorCode > 0) {
+				console.log(data.Status.ErrorDesc);
+				throw data.Status.ErrorDesc
+			} else {
+				callback.call(null, data);
+			}
+		};
+
+		var xhr = $.ajax({
+			type: "POST",
+			async: async,
+			cache: false,
+			url: service_endpoint + "?method="+method,
+			data: parameters,
+			success: callbackProxy,
+			dataType: 'json'
+		});
+		
+		return result;
+	};
+
+	service_interface.GetNewAlbums = function(callback) {
+		return call('GetNewAlbums', {}, callback);
+	};
+
+	service_interface.GetRecommendedAlbums = function(callback) {
+		return call('GetRecommendedAlbums', {}, callback);
+	};
+
+	service_interface.GetAlbumById = function(AlbumId, callback) {
+		return call('GetAlbumById', {
+			AlbumId: AlbumId
+		}, callback);
+	};
+	return service_interface;
+})());
+
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var publicInterface = {};
+
+	publicInterface.getCurrentContext = function() {
+		return $(':root > body').attr('data-context');
+	};
+
+	publicInterface.setCurrentContext = function(context) {
+		$(':root > body').attr('data-context', context).trigger('active.'+context);
+	}
+
+	$(document).ready(function(){
+	});
+
+	return publicInterface;
+})());
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller.Login', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var contextName = "Login", publicInterface = {};
+
+	publicInterface.performeLogin = function(username, password) {
+		MusicBox.Service.Auth.login(username, password); // sync request
+		MusicBox.Controller.setCurrentContext('Dashboard');
+	};
+
+	$(document).ready(function(){
+		// bind events and actions
+		$('#login form').bind('submit.controller', function(e){
+			var username, password;
+			e.preventDefault();
+			username = $('#login form input[name="username"]').val();
+			password = $('#login form input[name="password"]').val();
+			publicInterface.performeLogin(username, password);
+		});
+
+		$(':root > body').bind('active.'+contextName, function(e){
+			console.log("active context Login");
+		});
+	});
+
+	return publicInterface;
+})());
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller.Dashboard', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var contextName = "Dashboard", publicInterface = {};
+
+	publicInterface.renderNewAlbuns = function() {
+		MusicBox.Service.Content.GetNewAlbums(function(data){
+			var template =  MusicBox.getParticalTemplate('album_list');
+			var view = {
+				AlbumList: 	data.AlbumList,
+				id: 		'new_albuns'
+			};
+
+			$('#new_albuns').replaceWith(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	publicInterface.renderRecommendedAlbuns = function() {
+		MusicBox.Service.Content.GetRecommendedAlbums(function(data){
+			var template =  MusicBox.getParticalTemplate('album_list');
+			var view = {
+				AlbumList: 	data.AlbumList,
+				id: 		'recommended_albuns'
+			};
+
+			$('#recommended_albuns').replaceWith(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	$(document).ready(function(){
+		// bind events and actions
+		$(':root > body').bind('active.'+contextName, function(e){
+			console.log("active context Dashboard");
+			publicInterface.renderNewAlbuns();
+			publicInterface.renderRecommendedAlbuns();
+		});
+	});
+
+	return publicInterface;
+})());
