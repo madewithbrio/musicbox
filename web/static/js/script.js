@@ -252,21 +252,29 @@ $(document).ready(function() {
 		throw "MusicBox not defined";
 	}
 })((function(){
-	var contextName = "Login", publicInterface = {};
+	var contextName = "Login", publicInterface = {}, storage = window.localStorage, stogareKey = 'credential';
 
-	publicInterface.performeLogin = function(username, password) {
-		MusicBox.Service.Auth.login(username, password); // sync request
+	publicInterface.performeLogin = function(credentialObj) {
+		MusicBox.Service.Auth.login(credentialObj.username, credentialObj.password); // sync request
 		MusicBox.Controller.setCurrentContext('Dashboard');
 	};
 
 	$(document).ready(function(){
+		var credential = storage.getItem(stogareKey);
+		if (typeof credential === 'string') {
+			var credentialObj = JSON.parse(credential);
+			publicInterface.performeLogin(credentialObj);
+		}
+
 		// bind events and actions
 		$('#login form').bind('submit.controller', function(e){
 			var username, password;
 			e.preventDefault();
-			username = $('#login form input[name="username"]').val();
-			password = $('#login form input[name="password"]').val();
-			publicInterface.performeLogin(username, password);
+			var credentialObj = {};
+			credentialObj.username = $('#login form input[name="username"]').val();
+			credentialObj.password = $('#login form input[name="password"]').val();
+			storage.setItem(stogareKey, JSON.stringify(credentialObj));
+			publicInterface.performeLogin(credentialObj);
 		});
 
 		$(':root > body').bind('active.'+contextName, function(e){
