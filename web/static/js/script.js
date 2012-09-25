@@ -178,13 +178,22 @@ $(document).ready(function() {
 		var async = typeof callback === "function";
 		if (!async) callback = function(data){result=data;};
 
+		var callbackProxy = function(data) {
+			if (data.Status.ErrorCode > 0) {
+				console.log(data.Status.ErrorDesc);
+				throw data.Status.ErrorDesc
+			} else {
+				callback.call(null, data);
+			}
+		};
+
 		var xhr = $.ajax({
 			type: "POST",
 			async: async,
 			cache: false,
 			url: service_endpoint + "?method="+method,
 			data: parameters,
-			success: callback,
+			success: callbackProxy,
 			dataType: 'json'
 		});
 		
@@ -193,6 +202,10 @@ $(document).ready(function() {
 
 	service_interface.GetNewAlbums = function(callback) {
 		return call('GetNewAlbums', {}, callback);
+	};
+
+	service_interface.GetRecommendedAlbums = function(callback) {
+		return call('GetRecommendedAlbums', {}, callback);
 	};
 
 	service_interface.GetAlbumById = function(AlbumId, callback) {
@@ -204,3 +217,102 @@ $(document).ready(function() {
 })());
 
 
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var publicInterface = {};
+
+	publicInterface.getCurrentContext = function() {
+		return $(':root > body').attr('data-context');
+	};
+
+	publicInterface.setCurrentContext = function(context) {
+		$(':root > body').attr('data-context', context).trigger('active.'+context);
+	}
+
+	$(document).ready(function(){
+	});
+
+	return publicInterface;
+})());
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller.Login', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var contextName = "Login", publicInterface = {};
+
+	publicInterface.performeLogin = function(username, password) {
+		MusicBox.Service.Auth.login(username, password); // sync request
+		MusicBox.Controller.setCurrentContext('Dashboard');
+	};
+
+	$(document).ready(function(){
+		// bind events and actions
+		$('#login form').bind('submit.controller', function(e){
+			var username, password;
+			e.preventDefault();
+			username = $('#login form input[name="username"]').val();
+			password = $('#login form input[name="password"]').val();
+			publicInterface.performeLogin(username, password);
+		});
+
+		$(':root > body').bind('active.'+contextName, function(e){
+			console.log("active context Login");
+		});
+	});
+
+	return publicInterface;
+})());
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller.Dashboard', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var contextName = "Dashboard", publicInterface = {};
+
+	publicInterface.renderNewAlbuns = function() {
+		MusicBox.Service.Content.GetNewAlbums(function(data){
+			var template =  MusicBox.getParticalTemplate('album_list');
+			var view = {
+				AlbumList: 	data.AlbumList,
+				id: 		'new_albuns'
+			};
+
+			$('#new_albuns').replaceWith(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	publicInterface.renderRecommendedAlbuns = function() {
+		MusicBox.Service.Content.GetRecommendedAlbums(function(data){
+			var template =  MusicBox.getParticalTemplate('album_list');
+			var view = {
+				AlbumList: 	data.AlbumList,
+				id: 		'recommended_albuns'
+			};
+
+			$('#recommended_albuns').replaceWith(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	$(document).ready(function(){
+		// bind events and actions
+		$(':root > body').bind('active.'+contextName, function(e){
+			console.log("active context Dashboard");
+			publicInterface.renderNewAlbuns();
+			publicInterface.renderRecommendedAlbuns();
+		});
+	});
+
+	return publicInterface;
+})());
