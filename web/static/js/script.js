@@ -216,7 +216,9 @@ $(document).ready(function() {
 	return service_interface;
 })());
 
-
+/**
+ *	Main Controller
+ */
 (function(runtime){
 	if (typeof window.MusicBox === 'object') {
 		window.MusicBox.register('Controller', runtime);
@@ -240,6 +242,9 @@ $(document).ready(function() {
 	return publicInterface;
 })());
 
+/**
+ * Controller Login
+ */
 (function(runtime){
 	if (typeof window.MusicBox === 'object') {
 		window.MusicBox.register('Controller.Login', runtime);
@@ -272,6 +277,9 @@ $(document).ready(function() {
 	return publicInterface;
 })());
 
+/**
+ * Controller Dashboard
+ */
 (function(runtime){
 	if (typeof window.MusicBox === 'object') {
 		window.MusicBox.register('Controller.Dashboard', runtime);
