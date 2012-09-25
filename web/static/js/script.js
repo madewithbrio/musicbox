@@ -213,6 +213,13 @@ $(document).ready(function() {
 			AlbumId: AlbumId
 		}, callback);
 	};
+
+	service_interface.GetTracksByAlbumId = function(AlbumId, callback) {
+		return call('GetTracksByAlbumId', {
+			AlbumId: AlbumId
+		}, callback);
+	};
+
 	return service_interface;
 })());
 
@@ -299,7 +306,7 @@ $(document).ready(function() {
 
 	publicInterface.renderNewAlbuns = function() {
 		MusicBox.Service.Content.GetNewAlbums(function(data){
-			var template =  MusicBox.getParticalTemplate('album_list');
+			var template =  MusicBox.getParticalTemplate('albuns_list');
 			var view = {
 				AlbumList: 	data.AlbumList,
 				id: 		'new_albuns'
@@ -311,7 +318,7 @@ $(document).ready(function() {
 
 	publicInterface.renderRecommendedAlbuns = function() {
 		MusicBox.Service.Content.GetRecommendedAlbums(function(data){
-			var template =  MusicBox.getParticalTemplate('album_list');
+			var template =  MusicBox.getParticalTemplate('albuns_list');
 			var view = {
 				AlbumList: 	data.AlbumList,
 				id: 		'recommended_albuns'
@@ -327,6 +334,57 @@ $(document).ready(function() {
 			console.log("active context Dashboard");
 			publicInterface.renderNewAlbuns();
 			publicInterface.renderRecommendedAlbuns();
+		});
+	});
+
+	return publicInterface;
+})());
+
+/**
+ * Controller Album
+ */
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Controller.Album', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var contextName = "Album", publicInterface = {};
+
+	publicInterface.renderAlbum = function(albumId) {
+		MusicBox.Service.Content.GetAlbumById(albumId, function(data){
+			var template =  MusicBox.getParticalTemplate('album_detail_header');
+			var view = {
+				Album: 	data.Album
+			};
+
+			$('#album > header').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	publicInterface.renderAlbumTrackList = function(albumId) {
+		MusicBox.Service.Content.GetTracksByAlbumId(albumId, function(data){
+			var template =  MusicBox.getParticalTemplate('album_track_list');
+			var view = {
+				TrackList: 	data.TrackList.Track
+			};
+
+			$('#album > ul.album_tracklist').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+		});
+	};
+
+	$(document).ready(function(){
+		// bind events and actions
+		$(':root > body').bind('active.'+contextName, function(e){
+			console.log("active context Album");
+		});
+
+		$(document).on('click', 'a[href="#album"][data-albumId]', function(){
+			var albumId = $(this).attr('data-albumId');
+			publicInterface.renderAlbum(albumId);
+			publicInterface.renderAlbumTrackList(albumId);
+			MusicBox.Controller.setCurrentContext(contextName);
 		});
 	});
 
