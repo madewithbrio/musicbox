@@ -34,7 +34,7 @@ implements Sapo_Rest_Server_Interface
 
 	private function doRequest($method, $requestParameters)
 	{
-		$response = self::getSOAPClient('PublicApi')->$method($request);
+		$response = self::getSOAPClient('PublicApi')->$method($requestParameters);
 		$returnProp = $method . "Result";
 
 		// @todo process type of exception
@@ -116,18 +116,19 @@ implements Sapo_Rest_Server_Interface
 		return $this->doRequest('GetNewAlbums', $request);
 	}
 
+	public function GetRecommendedAlbums()
+	{
+		$request = new stdClass;
+		$request->MBCredentials = self::getMBCredentials();
+		return $this->doRequest('GetRecommendedAlbums', $request);
+	}
+	
 	public function GetAlbumsByArtistId($ArtistId)
 	{
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
 		$request->ArtistId = $ArtistId;
-		$response = self::getSOAPClient('PublicApi')->GetAlbumsByArtistId($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetAlbumsByArtistIdResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetAlbumsByArtistIdResult;
+		return $this->doRequest('GetAlbumsByArtistId', $request);
 	}
 
 	public function GetAlbumsByCategoryId($CategoryId)
@@ -135,13 +136,7 @@ implements Sapo_Rest_Server_Interface
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
 		$request->CategoryId = $CategoryId;
-		$response = self::getSOAPClient('PublicApi')->GetAlbumsByCategoryId($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetAlbumsByCategoryIdResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetAlbumsByCategoryIdResult;
+		return $this->doRequest('GetAlbumsByCategoryId', $request);
 	}
 
 	public function GetAlbumsByCollectionId($CollectionId)
@@ -149,13 +144,7 @@ implements Sapo_Rest_Server_Interface
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
 		$request->CollectionId = $CollectionId;
-		$response = self::getSOAPClient('PublicApi')->GetAlbumsByCollectionId($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetAlbumsByCollectionIdResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetAlbumsByCollectionIdResult;		
+		return $this->doRequest('GetAlbumsByCollectionId', $request);		
 	}
 
 	public function GetAlbumById($AlbumId)
@@ -163,39 +152,21 @@ implements Sapo_Rest_Server_Interface
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
 		$request->AlbumId = $AlbumId;
-		$response = self::getSOAPClient('PublicApi')->GetAlbumById	($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetAlbumByIdResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetAlbumByIdResult;
+		return $this->doRequest('GetAlbumById', $request);
 	}
 
 	public function GetEditorialPlaylists()
 	{
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
-		$response = self::getSOAPClient('PublicApi')->GetEditorialPlaylists	($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetEditorialPlaylistsResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetEditorialPlaylistsResult;
+		return $this->doRequest('GetEditorialPlaylists', $request);
 	}
 
 	public function GetFavoriteAlbums()
 	{
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
-		$response = self::getSOAPClient('PublicApi')->GetFavoriteAlbums	($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetFavoriteAlbumsResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetFavoriteAlbumsResult;
+		return $this->doRequest('GetFavoriteAlbums', $request);
 	}
 
 	public function GetTrackById($TrackId)
@@ -203,13 +174,7 @@ implements Sapo_Rest_Server_Interface
 		$request = new stdClass;
 		$request->MBCredentials = self::getMBCredentials();
 		$request->TrackId = $TrackId;
-		$response = self::getSOAPClient('PublicApi')->GetTrackById($request);
-
-		// @todo process type of exception
-		if (empty($response) || !isset($response->GetTrackByIdResult)) {
-			throw new Exception("Error Processing Request", 1);
-		}
-		return $response->GetTrackByIdResult;
+		return $this->doRequest('GetTrackById', $request);
 	}
 
 	public function Status()

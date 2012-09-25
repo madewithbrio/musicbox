@@ -290,8 +290,17 @@ a.button {color:#999;}
 */
 
 
+/** CONTEXT **/
+body #main > div {display:none;}
 
+body[data-context="Login"] .system_menu,
+body[data-context="Login"] > #app > footer {display:none;}
 
+body[data-context="Login"] #login,
+body[data-context="Dashboard"] #dashboard,
+body[data-context="Search"] #search,
+body[data-context="Album"] #album,
+body[data-context="Artist"] #artist {display:block !important;}
 
 /* TOGGLES */
 .search_mode .system_menu ul li.search_toggle a {height:51px;background-color:#EEE;background-position:-150px -50px;}
@@ -422,10 +431,13 @@ a.button {color:#999;}
 
 /* MAIN */
 #main {/*position:absolute;top:50px;right:0;bottom:54px;left:0;*/background:#EEE;}
-.home {padding:10px;display:none;}
+/**
+#main > div {display:none;}
+#main > div.active {display:block;}
+**/
+.home, .login {padding:10px;}
 .dashboard_lists {width:700%;}
 .dashboard_lists > li {float:left;width:260px;margin:0 30px 0 0;}
-.dashboard_lists > li.login {display:none;}
 
 
 .tracklist li {overflow:hidden;}
@@ -464,7 +476,7 @@ a.button {color:#999;}
 
 
 /* ARTIST DETAIL */
-.artist_detail {display:none;}
+.artist_detail {}
 .artist_detail header {position:relative;}
 .artist_detail header .thumb {}
 .artist_detail header .thumb img {}
