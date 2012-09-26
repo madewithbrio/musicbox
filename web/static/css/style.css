@@ -436,10 +436,10 @@ body[data-context="Artist"] #artist {display:block !important;}
 #main > div {display:none;}
 #main > div.active {display:block;}
 **/
-.home, .login {padding:10px;}
+.home, .login {padding:10px 10px 0 10px;}
 .dashboard_lists {width:700%;}
-.dashboard_lists > li {float:left;width:260px;margin:0 30px 0 0;}
-.dashboard_lists > li .scrollable {height:263px;}
+.dashboard_lists > li {position:relative;float:left;width:260px;margin:0 30px 0 0;}
+.dashboard_lists > li .scrollable {margin:10px 0 0 0;}
 
 
 .tracklist li {overflow:hidden;}
@@ -456,7 +456,7 @@ body[data-context="Artist"] #artist {display:block !important;}
 
 /* ALBUM DETAIL */
 .album_detail {padding:10px 10px 15px 10px;}
-.album_detail header {margin:0 0 10px 0;}
+.album_detail header {min-height:100px;margin:0 0 10px 0;}
 .album_detail header .details {overflow:hidden;}
 .album_detail header .details * {margin:0 0 5px 0;}
 .album_detail header .band {}
