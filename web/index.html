@@ -382,8 +382,8 @@
             <p class="title ellipsis">{{TrackName}}</p>
             <p class="duration">{{Duration}}</p>
         </a>
-        <ul class="options buttons icon_buttons clearfix">
-            <li class="play"><a href="#"><i class="icon-play"></i></a></li>
+        <ul class="options buttons icon_buttons clearfix" data-json="{{toJson}}">
+            <li class="play"><a href="#play" data-element="play"><i class="icon-play"></i></a></li>
             <li class="queue_next"><a href="#"><i class="icon-indent-left"></i></a></li>
             <li class="queue_last"><a href="#"><i class="icon-indent-right"></i></a></li>
             <li class="favorite"><a href="#"><i class="icon-star"></i></a></li>
