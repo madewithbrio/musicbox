@@ -27,11 +27,6 @@ $(document).ready(function() {
 		$(":root > body").removeClass('search_mode');
 	});
 
-	$('a[href="#toggle_play"]').bind('click', function(e){
-		e.preventDefault();
-		$('.controls .play_pause').toggleClass('play');
-	});
-
 	$('a[href="#clear_playlist"]').bind('click', function(e){
 		e.preventDefault();
 		var answer = window.confirm("Tem a certeza que deseja limpar a sua playlist?")
@@ -55,7 +50,6 @@ $(document).ready(function() {
 		}
 		$(':root > body').toggleClass('player_mode');
 		$('#app > footer').css({'-webkit-transform': 'translate3d(0,' + translation + 'px,0)'});
-		//window.scrollTo(0, 1);
 	});
 
 	$('a[href="#toggle_shuffle"]').bind('click', function(e){
@@ -424,40 +418,57 @@ $(document).ready(function() {
 	};
 
 	publicInterface.Track.prototype.getUrl = function () { return this.Url; };
+	publicInterface.Track.prototype.is_playing = function() { return ($(audio).children().attr('src') == this.Url); }
+	publicInterface.Track.prototype.toJson = function() { return JSON.stringify(this); }
+
+	publicInterface.getPlayList = function () { return playlist; };
 
 	publicInterface.addTrackToPlaylist = function(track) {
+		$(':root > body').addClass('has_playlist');
 		playlist.push(track);
 	};
 
+	publicInterface.addTrackToPlaylistAfterCurrent = function(track) {
+		$(':root > body').addClass('has_playlist');
+		var idx = currentIdx;
+		playlist.splice(++idx,0,track);
+	}
+
 	publicInterface.clearPlaylist = function() {
+		$(':root > body').removeClass('has_playlist');
 		playlist = [];
 		currentIdx = -1;
 	};
 
-	publicInterface.startNext = function() {
+	publicInterface.play = function() {
+		if (playlist.length == 0) return; // dont do anything
+		playCurrentMusic();
+		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music		
+	};
+
+	publicInterface.skip = function() {
 		if (playlist.length == 0) return; // dont do anything
 		currentIdx++;
-		playCurrentMusic();
+		playCurrentMusic(true);
 		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music
 	};
 
-	publicInterface.playMusic = function(track) {
-		var repeat = options.repeat; 
-		options.repeat =false;
-		$(audio).children().attr('src', track.getUrl());
-		audio.load();
-		audio.play();
-
-		// reset repeat options state
-		$(audio).one('ended', function() { setTimeout(function(){ options.repeat = repeat; }, 250); });
+	publicInterface.previews = function() {
+		if (playlist.length == 0) return; // dont do anything
+		$('#app > footer > .player > nav.controls .play_pause').addClass('play');
+		currentIdx--;
+		playCurrentMusic(true);
+		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music
 	};
 
-	playCurrentMusic = function () {
+	playCurrentMusic = function (controller) {
 		clearTimeout(loadNextTimeout); // if have any loadNextMusic scheduled stop it
 		if (currentIdx >= playlist.length) currentIdx = 0;
 		$(audio).children().attr('src', playlist[currentIdx].getUrl());
+		$('#app > footer .mini_player').addClass('loading');
 		audio.load();
 		audio.play();
+		if ($(':root > body').hasClass('player_mode')) { renderPlaylist(); } // if in player mode render playlist
 	};
 
 	loadNextMusic = function() {
@@ -468,40 +479,93 @@ $(document).ready(function() {
 		preLoad.load();
 	};
 
+	renderPlayerPlay = function() {
+		var template =  MusicBox.getParticalTemplate('mini_player');
+		var view = {
+			Track: 	playlist[currentIdx]
+		};
+
+		$('#app > footer > .mini_player').html(Mustache.render(template, view, MusicBox.getParticalTemplate())).removeClass('loading');
+		$('#app > footer > .player > nav.controls .play_pause').removeClass('play');
+	};
+
+	renderPlaylist = function() {
+			var template =  MusicBox.getParticalTemplate('playlist_list');
+			var view = {
+				TrackList: 	playlist
+			};
+			$('#playlist').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+	};
+
 	$(document).ready(function(){
 		var source;
-		audio = document.createElement('audio');
+		audio = document.getElementById('player');
 		source = document.createElement('source');
 		source.setAttribute('type', 'audio/mpeg');
 		audio.appendChild(source);
-		$(audio).bind('ended.player', publicInterface.startNext); // at end start next
+
+		// player events
+		$(audio).bind('ended.player', publicInterface.skip); // at end start next
+		$(audio).bind('play.miniplayer', renderPlayerPlay);
+		$(audio).bind('progress.miniplayer', function(e){
+			if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+			    var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
+			    $('#app > footer nav.time_bars .buffered').css({width: loaded + '%'});
+			}
+		});
+		$(audio).bind('timeupdate.miniplayer', function(e){
+			if ((audio.currentTime != undefined)) {
+			    var played = parseInt(((audio.currentTime / audio.duration) * 100), 10);
+			    $('#app > footer nav.time_bars .elapsed_time').css({width: played + '%'});
+			}
+		});
+
 
 		preLoad = document.createElement('audio');
 		source = document.createElement('source');
 		source.setAttribute('type', 'audio/mpeg');
 		preLoad.appendChild(source);
 		//href="#play" data-element="play"
-	});
-	return publicInterface;
-})());
 
-(function(runtime){
-	if (typeof window.MusicBox === 'object') {
-		window.MusicBox.register('Player.GUI', runtime);
-	} else {
-		throw "MusicBox not defined";
-	}
-})((function(){
-	var publicInterface = {};
+		// Events
+		$(document).on('click.player_gui', 'a[data-element="play"]', function(e){
+			e.preventDefault();
+			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
+			publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(data)));
+			publicInterface.skip();
+		});
+		$('a[data-element="play_album"]').bind('click.player_gui', function(e){
+			e.preventDefault();
+			var data = $("#album ul.album_tracklist [data-json]");
+			if (data.length == 0) return;
+			for(var i = data.length - 1; i >= 0; --i) {
+				var track_json = data.get(i).getAttribute('data-json');
+				publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(track_json)));
+			}
+			publicInterface.skip();
+		});
 
-	var playMusic = function(e) {
-		e.preventDefault();
-		var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
-		MusicBox.Player.playMusic(new MusicBox.Player.Track(JSON.parse(data)));
-	}
+		$('a[data-element="toggle_player"]').bind('click.player_gui', function(e){ // open player -> render playlist
+			e.preventDefault();
+			if ($(':root > body').hasClass('menu_mode')) {
+				return;
+			}
+			renderPlaylist();
+		});
 
-	$(document).ready(function(){
-		$(document).on('click.Player', 'a[href="#play"][data-element="play"]', playMusic);
+		$('a[data-element="toggle_play"]').bind('click.player_gui', function(e){
+			e.preventDefault();
+			if (audio.paused) { audio.play(); }
+			else { audio.pause(); $(this).parent().addClass('play'); }
+		});
+		$('[data-element="previous"]').bind('click.player_gui', function(e){ 
+			e.preventDefault(); 
+			publicInterface.previews(); 
+		});
+		$('[data-element="skip"]').bind('click.player_gui', function(e){ 
+			e.preventDefault(); 
+			publicInterface.skip(); 
+		});
 	});
 	return publicInterface;
 })());
