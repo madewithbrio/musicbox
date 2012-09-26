@@ -380,7 +380,7 @@ $(document).ready(function() {
 			console.log("active context Album");
 		});
 
-		$(document).on('click', 'a[href="#album"][data-albumId]', function(){
+		$(document).on('click.'+contextName, 'a[href="#album"][data-albumId]', function(){
 			var albumId = $(this).attr('data-albumId');
 			publicInterface.renderAlbum(albumId);
 			publicInterface.renderAlbumTrackList(albumId);
@@ -388,5 +388,83 @@ $(document).ready(function() {
 		});
 	});
 
+	return publicInterface;
+})());
+
+
+(function(runtime){
+	if (typeof window.MusicBox === 'object') {
+		window.MusicBox.register('Player', runtime);
+	} else {
+		throw "MusicBox not defined";
+	}
+})((function(){
+	var publicInterface = {}, 
+		playlist = [], 
+		currentIdx = -1,
+		audio, preLoad, loadNextTimeout;
+
+	publicInterface.Track = function(object, trackId, url, trackName, artistName, albumName){
+		this.TrackId 				= object.TrackId;
+		this.TrackName 				= object.TrackName || trackName;
+		this.ArtistName 			= object.ArtistName || artistName;
+		this.ArtistId 				= object.ArtistId;
+		this.AlbumName 				= object.AlbumName || albumName;
+		this.AlbumId 				= object.AlbumId;
+		this.Duration 				= object.Duration;
+		this.AlbumCover 			= object.LargeAlbumCover;
+		this.AlbumNumberOfVolumes 	= object.AlbumNumberOfVolumes;
+		this.VolumeIndex 			= object.VolumeIndex;
+		this.TrackIndex 			= object.TrackIndex;
+		this.RecordLabel 			= object.RecordLabel;
+		this.Url 					= object.PreviewUrl || url;
+	};
+
+	publicInterface.Track.prototype.getUrl = function () { return this.Url; };
+
+	publicInterface.addTrackToPlaylist = function(track) {
+		playlist.push(track);
+	};
+
+	publicInterface.clearPlaylist = function() {
+		playlist = [];
+		currentIdx = -1;
+	};
+
+	publicInterface.play = function() {
+		if (playlist.length == 0) return; // dont do anything
+		currentIdx++;
+		playCurrentMusic();
+		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music
+	};
+
+	playCurrentMusic = function () {
+		clearTimeout(loadNextTimeout); // if have any loadNextMusic scheduled stop it
+		if (currentIdx >= playlist.length) currentIdx = 0;
+		$(audio).children().attr('src', playlist[currentIdx].getUrl());
+		audio.load();
+		audio.play();
+	};
+
+	loadNextMusic = function() {
+		var nextIdx = currentIdx + 1;
+		if (nextIdx >= playlist.length) nextIdx = 0;
+		$(preLoad).children().attr('src', playlist[nextIdx].getUrl());
+		preLoad.load();
+	};
+
+	$(document).ready(function(){
+		var source;
+		audio = document.createElement('audio');
+		source = document.createElement('source');
+		source.setAttribute('type', 'audio/mpeg');
+		audio.appendChild(source);
+		$(audio).bind('ended.player', publicInterface.play); // at end start next
+
+		preLoad = document.createElement('audio');
+		source = document.createElement('source');
+		source.setAttribute('type', 'audio/mpeg');
+		preLoad.appendChild(source);
+	});
 	return publicInterface;
 })());
