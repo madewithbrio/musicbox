@@ -434,7 +434,7 @@ $(document).ready(function() {
 		currentIdx = -1;
 	};
 
-	publicInterface.start = function() {
+	publicInterface.startNext = function() {
 		if (playlist.length == 0) return; // dont do anything
 		currentIdx++;
 		playCurrentMusic();
@@ -474,7 +474,7 @@ $(document).ready(function() {
 		source = document.createElement('source');
 		source.setAttribute('type', 'audio/mpeg');
 		audio.appendChild(source);
-		$(audio).bind('ended.player', publicInterface.play); // at end start next
+		$(audio).bind('ended.player', publicInterface.startNext); // at end start next
 
 		preLoad = document.createElement('audio');
 		source = document.createElement('source');
