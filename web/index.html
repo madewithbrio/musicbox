@@ -49,7 +49,7 @@
     <script src="/static/js/modernizr.min.js"></script>
 </head>
 
-<body class="nocallout notextselection has_playlist" data-context="Login">
+<body class="nocallout notextselection" data-context="Login">
 
     <nav id="menu" class="scrollable">
         <a href="/" class="logo">music box</a>
@@ -177,123 +177,28 @@
 
     <footer>
         <p class="player_tip">Playlist vazia</p>
-        <a href="#toggle_player" class="mini_player loading">
-            <div class="thumb"><img src="http://lorempixel.com/50/50" alt="" /></div>
-            <div class="details">
-                <p class="title ellipsis">Título da música comprido até dizer chega</p>
-                <p class="band ellipsis">Nome da banda</p>
-            </div>
-            <nav class="time_bars">
-                <div class="bar buffered"></div>
-                <div class="bar elapsed_time"></div>
-                <p class="timer elapsed_time_counter">2:33</p>
-                <p class="timer total_time">4:12</p>
-            </nav>
+        <a href="#toggle_player" data-element="toggle_player" class="mini_player">
+ 
         </a>
         <div class="player">
             <header>
                 <nav class="system_menu">
                     <h1>Em escuta</h1>
+                    <audio id="player"></audio>
                     <ul>
                         <li class="clear"><a href="#clear_playlist">Clear Playlist</a></li>
-                        <li class="close"><a href="#toggle_player">Close</a></li>
+                        <li class="close"><a href="#toggle_player" data-element="toggle_player">Close</a></li>
                     </ul>
                 </nav>
             </header>
             <ul id="playlist" class="list tracklist scrollable">
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="current_track">
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum que pode ser longo<span></p>
-                        </div>
-                        <nav class="time_bars">
-                            <div class="bar buffered"></div>
-                            <div class="bar elapsed_time"></div>
-                            <p class="timer elapsed_time_counter">2:33</p>
-                            <p class="timer total_time">4:12</p>
-                        </nav>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumb"><img src="/static/img/lickitback.jpg" alt="" /></div>
-                        <div class="details">
-                            <p class="title ellipsis">Título da música</p>
-                            <p class="band ellipsis">Nome da banda<span class="album"> - Nome do álbum<span></p>
-                        </div>
-                    </a>
-                </li>
+
             </ul>
             <nav class="controls">
                 <ul class="clearfix">
                     <li class="shuffle"><a href="#toggle_shuffle">Shuffle</a></li>
                     <li class="previous"><a href="#previous">Previous</a></li>
-                    <li class="play_pause play"><a href="#toggle_play">Play</a></li>
+                    <li class="play_pause play"><a href="#toggle_play" data-element="toggle_play">Play</a></li>
                     <li class="next"><a href="#next">Next</a></li>
                     <li class="repeat"><a href="#toggle_repeat">Repeat</a></li>
                 </ul>
@@ -359,8 +264,8 @@
 
     <script type="text/mustache" data-element="template" data-name="playlist_list_item">
     <li {{#is_playing}}class="current_track"{{/is_playing}}>
-        <a href="#">
-            <div class="thumb"><img src="{{LargeAlbumCover}}" alt="" /></div>
+        <a href="#" data-json="{{toJson}}">
+            <div class="thumb"><img src="{{AlbumCover}}" alt="" /></div>
             <div class="details">
                 <p class="title ellipsis">{{TrackName}}</p>
                 <p class="band ellipsis">{{ArtistName}}<span class="album"> - {{AlbumName}}<span></p>
@@ -392,6 +297,22 @@
             <li class="share"><a href="#"><i class="icon-share-alt"></i></a></li>
         </ul>
     </li>
+    </script>
+
+    <script type="text/mustache" data-element="template" data-name="mini_player">
+    {{#Track}}
+    <div class="thumb"><img src="{{AlbumCover}}" alt="" /></div>
+    <div class="details">
+        <p class="title ellipsis">{{TrackName}}</p>
+        <p class="band ellipsis">{{ArtistName}}</p>
+    </div>
+    {{/Track}}
+    <nav class="time_bars">
+        <div class="bar buffered"></div>
+        <div class="bar elapsed_time"></div>
+        <p class="timer elapsed_time_counter">2:33</p>
+        <p class="timer total_time">4:12</p>
+    </nav>
     </script>
   <!-- JavaScript at the bottom for fast page loading -->
 

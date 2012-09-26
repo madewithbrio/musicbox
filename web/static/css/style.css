@@ -387,8 +387,8 @@ body[data-context="Artist"] #artist {display:block !important;}
 
 .time_bars {position:relative;height:3px;background:rgba(0,0,0,0.8);}
 .time_bars .bar {position:absolute;top:0;left:0;height:100%;}
-.time_bars .bar.elapsed_time {width:30%;background:#0099AB;}
-.time_bars .bar.buffered {width:90%;background:rgba(255,255,255,0.2);}
+.time_bars .bar.elapsed_time {background:#0099AB;}
+.time_bars .bar.buffered {background:rgba(255,255,255,0.2);}
 .time_bars .timer {display:none;}
 
 
