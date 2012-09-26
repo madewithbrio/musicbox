@@ -309,7 +309,7 @@
         <p class="title">{{AlbumName}}</p>
         <p class="metadata ellipsis">
             {{#Genre}}<span class="genre">{{Genre}}</span>{{/Genre}}
-            <span class="nr_tracks"> - {{NumberOfTracks}} músicas</span>
+            <span class="nr_tracks">{{#Genre}} - {{/Genre}}{{NumberOfTracks}} músicas</span>
             <span class="duration">({{Duration}})</span>
         </p>
         <p class="metadata ellipsis">
