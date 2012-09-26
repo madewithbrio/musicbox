@@ -449,31 +449,19 @@ $(document).ready(function() {
 	publicInterface.skip = function() {
 		if (playlist.length == 0) return; // dont do anything
 		currentIdx++;
-		playCurrentMusic();
+		playCurrentMusic(true);
 		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music
 	};
 
 	publicInterface.previews = function() {
 		if (playlist.length == 0) return; // dont do anything
-		$('#app > footer > .player > nav.controls > .play_pause').addClass('play');
+		$('#app > footer > .player > nav.controls .play_pause').addClass('play');
 		currentIdx--;
-		playCurrentMusic();
+		playCurrentMusic(true);
 		loadNextTimeout = setTimeout(loadNextMusic, 1000); // after 1 sec start load new music
 	};
 
-/**
-	publicInterface.playMusic = function(track) {
-		var repeat = options.repeat; 
-		options.repeat =false;
-		$(audio).children().attr('src', track.getUrl());
-		audio.load();
-		audio.play();
-
-		// reset repeat options state
-		$(audio).one('ended', function() { setTimeout(function(){ options.repeat = repeat; }, 250); });
-	};
-**/
-	playCurrentMusic = function () {
+	playCurrentMusic = function (controller) {
 		clearTimeout(loadNextTimeout); // if have any loadNextMusic scheduled stop it
 		if (currentIdx >= playlist.length) currentIdx = 0;
 		$(audio).children().attr('src', playlist[currentIdx].getUrl());
@@ -498,7 +486,7 @@ $(document).ready(function() {
 		};
 
 		$('#app > footer > .mini_player').html(Mustache.render(template, view, MusicBox.getParticalTemplate())).removeClass('loading');
-		$('#app > footer > .player > nav.controls > .play_pause').removeClass('play');
+		$('#app > footer > .player > nav.controls .play_pause').removeClass('play');
 	};
 
 	renderPlaylist = function() {
@@ -546,6 +534,16 @@ $(document).ready(function() {
 			publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(data)));
 			publicInterface.skip();
 		});
+		$('a[data-element="play_album"]').bind('click.player_gui', function(e){
+			e.preventDefault();
+			var data = $("#album ul.album_tracklist [data-json]");
+			if (data.length == 0) return;
+			for(var i = data.length - 1; i >= 0; --i) {
+				var track_json = data.get(i).getAttribute('data-json');
+				publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(track_json)));
+			}
+			publicInterface.skip();
+		});
 
 		$('a[data-element="toggle_player"]').bind('click.player_gui', function(e){ // open player -> render playlist
 			e.preventDefault();
@@ -555,11 +553,19 @@ $(document).ready(function() {
 			renderPlaylist();
 		});
 
-		$('a[data-element="toggle_play"]').bind('click.player_gui', function(){
-			if (!audio.playing) { audio.play(); $(this).parent().parent().addClass('play'); }
-			else { audio.pause(); $(this).parent().parent().removeClass('play'); }
-		})
-
+		$('a[data-element="toggle_play"]').bind('click.player_gui', function(e){
+			e.preventDefault();
+			if (audio.paused) { audio.play(); }
+			else { audio.pause(); $(this).parent().addClass('play'); }
+		});
+		$('[data-element="previous"]').bind('click.player_gui', function(e){ 
+			e.preventDefault(); 
+			publicInterface.previews(); 
+		});
+		$('[data-element="skip"]').bind('click.player_gui', function(e){ 
+			e.preventDefault(); 
+			publicInterface.skip(); 
+		});
 	});
 	return publicInterface;
 })());
