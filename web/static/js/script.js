@@ -430,15 +430,22 @@ $(document).ready(function() {
 
 	publicInterface.getPlayList = function () { return playlist; };
 
+	displayNotification = function(text) {
+		$('#notification').html(text).show();
+		$('#notification').delay(1000).fadeOut(500);
+	}
+
 	publicInterface.addTrackToPlaylist = function(track) {
 		$(':root > body').addClass('has_playlist');
 		playlist.push(track);
+		displayNotification('Faixa adicionada ao final da playlist');
 	};
 
 	publicInterface.addTrackToPlaylistAfterCurrent = function(track) {
 		$(':root > body').addClass('has_playlist');
 		var idx = currentIdx;
 		playlist.splice(++idx,0,track);
+		displayNotification('Faixa vai tocar a seguir');
 	}
 
 	publicInterface.clearPlaylist = function() {
