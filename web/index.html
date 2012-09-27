@@ -40,7 +40,7 @@
     <!-- more tags for your 'head' to consider h5bp.com/d/head-Tips -->
 
     <!-- Main Stylesheet -->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Six+Caps|Spinnaker|Wire+One|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Six+Caps|Spinnaker|Wire+One|Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/font-awesome.css">
     <!--[if IE ]> <link rel="stylesheet" href="/static/css/font-awesome-ie7.css"> <![endif]-->
@@ -51,6 +51,21 @@
 
 <body class="nocallout notextselection" data-context="Login">
 
+    <!-- LOGIN -->
+    <!-- LOGIN -->
+    <!-- LOGIN -->
+    <div id="login" class="login">
+        <h1>Login</h1>
+        <form action="/login" method="POST" id="" class="login_form">
+            <input type="username" name="username" class="username" placeholder="username" value="" />
+            <input type="password" name="password" class="password" placeholder="password" value="" />
+            <input type="submit" value="Entrar" class="button" />
+        </form>
+    </div>
+
+    <!-- MENU -->
+    <!-- MENU -->
+    <!-- MENU -->
     <nav id="menu" class="scrollable">
         <a href="/" class="logo">music box</a>
         <h3>music box</h3>
@@ -68,7 +83,7 @@
             <li><a href="#" class="ellipsis"><i class="icon-star"></i>Favoritos</a></li>
             <li><a href="#" class="ellipsis"><i class="icon-group"></i>Amigos</a></li>
             <li><a href="#" class="ellipsis"><i class="icon-cog"></i>Opções</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-unlock"></i>Logout</a></li>
+            <li><a href="#" class="ellipsis"><i class="icon-signout"></i>Logout</a></li>
         </ul>
     </nav>
 
@@ -87,65 +102,65 @@
     </header>
 
     <div id="main" class="scrollable">
-        <div id="login" class="login">
-            <h1>Login</h1>
-            <form action="/login" method="POST" id="" class="login_form">
-                <input type="username" name="username" class="username" placeholder="username" value="" />
-                <input type="password" name="password" class="password" placeholder="password" value="" />
-                <input type="submit" value="Entrar" class="button" />
-            </form>
-        </div>
-        <div id="dashboard" class="panel">
-            <div class="home">
-                <ul class="list dashboard_lists clearfix">
-                    
-                    <li>
-                        <h1>Novidades</h1>
-                        <div class="scrollable">
-                            <ul id="new_albuns">
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="scrollable">
-                        <h1>Recomendamos</h1>
-                        <div class="scrollable">
-                            <ul id="recommended_albuns">
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <h1>Playlists</h1>
-                    </li>
-                    <li>
-                        <h1>Géneros</h1>
-                    </li>
-                    <li>
-                        <h1>Temáticas</h1>
-                    </li>
-                    <li>
-                        <h1>Em escuta</h1>
-                    </li>
+        <div id="dashboard">
+            <nav class="pivot_list scrollable">
+                <ul class="clearfix">
+                    <li><a href="#" class="selected">Novidades</a></li>
+                    <li><a href="#">Playlists</a></li>
+                    <li><a href="#">Géneros</a></li>
+                    <li><a href="#">Playlists</a></li>
+                    <li><a href="#">Temáticas</a></li>
+                    <li><a href="#">Em escuta</a></li>
                 </ul>
-            </div>
+            </nav>
+            <ul id="new_albuns">
+            </ul>
+            <!--ul class="list dashboard_lists clearfix">
+                
+                <li>
+                    <h1>Novidades</h1>
+                    <div class="scrollable">
+                        <ul id="new_albuns">
+                        </ul>
+                    </div>
+                </li>
+                <li class="scrollable">
+                    <h1>Recomendamos</h1>
+                    <div class="scrollable">
+                        <ul id="recommended_albuns">
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <h1>Playlists</h1>
+                </li>
+                <li>
+                    <h1>Géneros</h1>
+                </li>
+                <li>
+                    <h1>Temáticas</h1>
+                </li>
+                <li>
+                    <h1>Em escuta</h1>
+                </li>
+            </ul-->
         </div>
 
-        <div id="search">
+        <div id="search" class="">
             <form action="/search" method="POST" id="" class="search_form">
                 <input type="search" name="query" class="query" placeholder="pesquisa" value="" />
                 <input type="submit" value="Pesquisar" />
             </form>
             <ul class="search_results_list">
-                <ul class="search_results_list">
-                </ul>
+            </ul>
         </div>
 
 
         <!-- ALBUM DETAIL -->
         <!-- ALBUM DETAIL -->
         <!-- ALBUM DETAIL -->
-        <div id="album" class="album_detail">
+        <div id="album_detail" class="album_detail">
             <header class="clearfix">
-                
             </header>
             
             <ul class="buttons icon_buttons clearfix">
@@ -156,21 +171,21 @@
                 <li class="share"><a href="#" title="Partilhar" class="button"><i class="icon-share-alt"></i></a></li>
             </ul>
 
-            <ul class="list tracklist album_tracklist clearfix">            
-
+            <ul class="list tracklist album_tracklist clearfix">
+            </ul>
+            <ul class="buttons clearfix">
+                <li class="artist"><a href="#" title="Ver artista" class="button"><i class="icon-user"></i>Ver artista</a></li>
             </ul>
         </div>
 
         <!-- ARTIST DETAIL -->
         <!-- ARTIST DETAIL -->
         <!-- ARTIST DETAIL -->
-        <div id="artist" class="artist_detail">
-            
+        <div id="artist_detail" class="artist_detail panel">
             <header class="clearfix">
                 <div class="thumb"><img src="http://lorempixel.com/320/140/" alt="" /></div>
                 <p class="band">The Independent Music Machine</p>
             </header>
-
         </div>
 
     </div>
@@ -191,10 +206,14 @@
                     </ul>
                 </nav>
             </header>
-            <ul id="playlist" class="list tracklist scrollable">
-
-            </ul>
+            <ul id="playlist" class="list tracklist scrollable"></ul>
             <nav class="controls">
+                <nav class="time_bars">
+                    <div class="bar buffered"></div>
+                    <div class="bar elapsed_time"></div>
+                    <p class="timer elapsed_time_counter">2:33</p>
+                    <p class="timer total_time">4:12</p>
+                </nav>
                 <ul class="clearfix">
                     <li class="shuffle"><a href="#toggle_shuffle">Shuffle</a></li>
                     <li class="previous"><a href="#previous" data-element="previous">Previous</a></li>
@@ -265,19 +284,12 @@
     <script type="text/mustache" data-element="template" data-name="playlist_list_item">
     <li {{#is_playing}}class="current_track"{{/is_playing}}>
         <a href="#" data-json="{{toJson}}">
+            <p class="track_nr">222</p>
             <div class="thumb"><img src="{{AlbumCover}}" alt="" /></div>
             <div class="details">
                 <p class="title ellipsis">{{TrackName}}</p>
                 <p class="band ellipsis">{{ArtistName}}<span class="album"> - {{AlbumName}}<span></p>
             </div>
-            {{#is_playing}}
-            <nav class="time_bars">
-                <div class="bar buffered"></div>
-                <div class="bar elapsed_time"></div>
-                <p class="timer elapsed_time_counter">2:33</p>
-                <p class="timer total_time">4:12</p>
-            </nav>
-            {{/is_playing}}
         </a>
     </li>
     </script>
