@@ -528,13 +528,23 @@ $(document).ready(function() {
 		//href="#play" data-element="play"
 
 		// Events
-		$(document).on('click.player_gui', 'a[data-element="play"]', function(e){
+		$(document).on('click.player_gui', 'a[data-element="play"]', function(e){ // play track
 			e.preventDefault();
 			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
 			publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(data)));
 			publicInterface.skip();
 		});
-		$('a[data-element="play_album"]').bind('click.player_gui', function(e){
+		$(document).on('click.player_gui', 'a[data-element="queue_next"]', function(e){ // queue track in next position
+			e.preventDefault();
+			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
+			publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(data)));
+		});
+		$(document).on('click.player_gui', 'a[data-element="queue_last"]', function(e){ // queue track in last position
+			e.preventDefault();
+			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
+			publicInterface.addTrackToPlaylist(new MusicBox.Player.Track(JSON.parse(data)));
+		});
+		$('a[data-element="play_album"]').bind('click.player_gui', function(e){ // play album
 			e.preventDefault();
 			var data = $("#album ul.album_tracklist [data-json]");
 			if (data.length == 0) return;
@@ -542,7 +552,25 @@ $(document).ready(function() {
 				var track_json = data.get(i).getAttribute('data-json');
 				publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(track_json)));
 			}
-			publicInterface.skip();
+			publicInterface.skip(); 
+		});
+		$('a[data-element="queue_next_album"]').bind('click.player_gui', function(e){ // queue album in next position
+			e.preventDefault();
+			var data = $("#album ul.album_tracklist [data-json]");
+			if (data.length == 0) return;
+			for(var i = data.length - 1; i >= 0; --i) {
+				var track_json = data.get(i).getAttribute('data-json');
+				publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(track_json)));
+			}
+		});
+		$('a[data-element="queue_last_album"]').bind('click.player_gui', function(e){ // queue album in last position
+			e.preventDefault();
+			var data = $("#album ul.album_tracklist [data-json]");
+			if (data.length == 0) return;
+			for(var i = data.length - 1; i >= 0; --i) {
+				var track_json = data.get(i).getAttribute('data-json');
+				publicInterface.addTrackToPlaylist(new MusicBox.Player.Track(JSON.parse(track_json)));
+			}
 		});
 
 		$('a[data-element="toggle_player"]').bind('click.player_gui', function(e){ // open player -> render playlist
