@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$('#main').css({height: (window.innerHeight-50-50)});
 	$('#search').css({height: (window.innerHeight-50-50)});
 	$('#playlist').css({height: (window.innerHeight-50-80)});
+	$('#dashboard > .scrollable').css({height: (window.innerHeight-50-50-73)});
 	$('#app > footer').css({height: (window.innerHeight)});
 
 	$('nav.pivot_list ul li a').bind('click', function(e){

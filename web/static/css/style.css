@@ -369,14 +369,13 @@ body[data-context="Artist"] #playlist_detail {display:block !important;}
 .thumb img {width:100%;}
 .list li a .details {position:relative;overflow:hidden;}
 
-.album_list {padding:0 10px;}
-.album_list li {float:left;width:48%;margin:0 4% 20px 0;}
-.album_list li:nth-child(2n) {margin:0 0 20px 0;;}
-.album_list li:nth-child(2n+1) {clear:both;}
-.album_list li a {padding:0;}
+.album_list {padding:0 5px;}
+.album_list li {float:left;margin:0 0 10px 0;}
+/*.album_list li:nth-child(2n+1) {clear:both;}*/
+.album_list li a {width:145px;padding:5px;}
 .album_list li a .thumb {float:none;width:100%;min-height:125px;margin:0 0 5px 0;}
-.album_list li a .details {text-align:center}
-.album_list li a .details .title {font-size:14px;}
+.album_list li a .details {height:51px;font-size:14px;text-align:center;}
+.album_list li a .details .title {}
 .album_list li a .details .band {color:#999;}
 .album_list li a .details .tracks {font-size:10px;text-transform:uppercase;color:#999;display:none;}
 
@@ -518,17 +517,17 @@ form.login_form input[type=submit] {width:260px;height:40px;background:#333;text
 
 
 
+@media only screen and (min-width:640px) {
+.album_list li a {width:154px;margin:0 50px 10px 0;}
 /*
- * Media queries for responsive design github.com/h5bp/mobile-boilerplate/wiki/The-Style
- */
+.album_list li {width:32%;margin:0 2% 20px 0;}
+.album_list li:nth-child(2n) {margin:0 2% 20px 0;}
+.album_list li:nth-child(3n) {margin:0 0 20px 0;}
+.album_list li:nth-child(2n+1) {clear:none;}
+.album_list li:nth-child(3n+1) {clear:both;}
+*/
+}
 
-
-/* Styles for desktop and large screen ----------- */
-
-/*styles for 800px and up!*/
-@media only screen and (min-width: 800px) {
-  /* Styles */
-}/*/mediaquery*/
 
 
 /* iPhone 4, Opera Mobile 11 and other high pixel ratio devices ----------- */
