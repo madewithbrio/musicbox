@@ -6,8 +6,15 @@ $(document).ready(function() {
 
 	//$('#app > footer').css({top: (window.innerHeight-54)})
 	$('#main').css({height: (window.innerHeight-50-50)});
-	$('#playlist').css({height: (window.innerHeight-50-50)});
+	$('#search').css({height: (window.innerHeight-50-50)});
+	$('#playlist').css({height: (window.innerHeight-50-80)});
 	$('#app > footer').css({height: (window.innerHeight)});
+
+	$('nav.pivot_list ul li a').bind('click', function(e){
+		e.preventDefault();
+		$('nav.pivot_list ul li a.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
 
 	$('a[href="#search"]').bind('click', function(e){
 		e.preventDefault();
@@ -353,7 +360,7 @@ $(document).ready(function() {
 				Album: 	data.Album
 			};
 
-			$('#album > header').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+			$('#album_detail > header').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
 		});
 	};
 
@@ -364,7 +371,7 @@ $(document).ready(function() {
 				TrackList: 	data.TrackList.Track.map(function(i){i.toJson = function() {return JSON.stringify(i);}; return i;})
 			};
 
-			$('#album > ul.album_tracklist').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
+			$('#album_detail > ul.album_tracklist').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
 		});
 	};
 
@@ -546,7 +553,7 @@ $(document).ready(function() {
 		});
 		$('a[data-element="play_album"]').bind('click.player_gui', function(e){ // play album
 			e.preventDefault();
-			var data = $("#album ul.album_tracklist [data-json]");
+			var data = $("#album_detail ul.album_tracklist [data-json]");
 			if (data.length == 0) return;
 			for(var i = data.length - 1; i >= 0; --i) {
 				var track_json = data.get(i).getAttribute('data-json');
