@@ -445,8 +445,8 @@ body[data-context="Artist"] #playlist_detail {display:block !important;}
 .has_playlist .controls ul li.play_pause a,
 .has_playlist .controls ul li.previous a,
 .has_playlist .controls ul li.next a {opacity:1;cursor:pointer;}
- 
-
+.time_bars {display: none;} 
+.has_playlist .time_bars {display: block;}
 
 .player_mode {}
 .player_mode > #app > footer {}
