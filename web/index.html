@@ -102,19 +102,27 @@
     </header>
 
     <div id="main" class="scrollable">
+
+        <p id ="notification" class="notification">Música adicionada ao final da playlist</p>
+
         <div id="dashboard">
-            <nav class="pivot_list scrollable">
-                <ul class="clearfix">
-                    <li><a href="#" class="selected">Novidades</a></li>
-                    <li><a href="#">Playlists</a></li>
-                    <li><a href="#">Géneros</a></li>
-                    <li><a href="#">Playlists</a></li>
-                    <li><a href="#">Temáticas</a></li>
-                    <li><a href="#">Em escuta</a></li>
-                </ul>
+            <nav class="pivot_list">
+                <p class="title">Destaques</p>
+                <div class="scrollable">
+                    <ul class="clearfix">
+                        <li><a href="#" class="selected">Novidades</a></li>
+                        <li><a href="#">Playlists</a></li>
+                        <li><a href="#">Géneros</a></li>
+                        <li><a href="#">Playlists</a></li>
+                        <li><a href="#">Temáticas</a></li>
+                        <li><a href="#">Em escuta</a></li>
+                    </ul>
+                </div>
             </nav>
-            <ul id="new_albuns">
-            </ul>
+            <div class="scrollable">
+                <ul id="new_albuns">
+                </ul>
+            </div>
             <!--ul class="list dashboard_lists clearfix">
                 
                 <li>
@@ -273,9 +281,9 @@
         <a href="#album" data-albumId="{{AlbumId}}">
             <div class="thumb"><img src="{{LargeAlbumCover}}" alt="" /></div>
             <div class="details">
-            <p class="title">{{AlbumName}}</p>
-            <p class="band">{{ArtistName}}</p>
-            <p class="tracks">{{NumberOfTracks}} faixas</p>
+                <p class="title">{{AlbumName}}</p>
+                <p class="band">{{ArtistName}}</p>
+                <p class="tracks">{{NumberOfTracks}} faixas</p>
             </div>
         </a>
     </li>

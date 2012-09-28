@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$('#main').css({height: (window.innerHeight-50-50)});
 	$('#search').css({height: (window.innerHeight-50-50)});
 	$('#playlist').css({height: (window.innerHeight-50-80)});
+	$('#dashboard > .scrollable').css({height: (window.innerHeight-50-50-73)});
 	$('#app > footer').css({height: (window.innerHeight)});
 
 	$('nav.pivot_list ul li a').bind('click', function(e){
@@ -430,6 +431,11 @@ $(document).ready(function() {
 
 	publicInterface.getPlayList = function () { return playlist; };
 
+	displayNotification = function(text) {
+		$('#notification').html(text).show();
+		$('#notification').delay(1000).fadeOut(500);
+	}
+
 	publicInterface.addTrackToPlaylist = function(track) {
 		$(':root > body').addClass('has_playlist');
 		playlist.push(track);
@@ -438,6 +444,7 @@ $(document).ready(function() {
 			playCurrentMusic();
 			audio.pause();
 		}
+		displayNotification('Faixa adicionada ao final da playlist');
 	};
 
 	publicInterface.addTrackToPlaylistAfterCurrent = function(track) {
@@ -448,6 +455,7 @@ $(document).ready(function() {
 			playCurrentMusic();
 			audio.pause();
 		}
+		displayNotification('Faixa vai tocar a seguir');
 	}
 
 	publicInterface.clearPlaylist = function() {
