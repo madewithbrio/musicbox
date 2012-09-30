@@ -177,6 +177,14 @@ implements Sapo_Rest_Server_Interface
 		return $this->doRequest('GetTrackById', $request);
 	}
 
+	public function GetTracksByAlbumId($AlbumId)
+	{
+		$request = new stdClass;
+		$request->MBCredentials = self::getMBCredentials();
+		$request->AlbumId = $AlbumId;
+		return $this->doRequest('GetTracksByAlbumId', $request);
+	}
+
 	public function Status()
 	{
 		print "all ok";
