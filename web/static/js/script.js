@@ -59,6 +59,8 @@ $(document).ready(function() {
 		$('.tracklist li.active').removeClass('active');
 		if (!isActive) $(this).parent().addClass('active');
 	});
+
+	window.scrollTo(0, 1);
 });
 
 /**
@@ -485,7 +487,6 @@ $(document).ready(function() {
 			renderPlayerPlay(); 
 			$(':root > body').addClass('has_playlist'); 
 		}
-		displayNotification('Faixa adicionada ao final da playlist');
 	};
 
 	publicInterface.addTrackToPlaylistAfterCurrent = function(track) {
@@ -497,7 +498,6 @@ $(document).ready(function() {
 			renderPlayerPlay(); 
 			$(':root > body').addClass('has_playlist'); 
 		}
-		displayNotification('Faixa vai tocar a seguir');
 	}
 
 	publicInterface.clearPlaylist = function() { // clean playlist and make sure we have reset interfaces
@@ -647,11 +647,13 @@ $(document).ready(function() {
 			e.preventDefault();
 			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
 			publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(data)));
+			displayNotification('Faixa vai tocar a seguir');
 		});
 		$(document).on('click.player_gui', 'a[data-element="queue_last"]', function(e){ // queue track in last position
 			e.preventDefault();
 			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
 			publicInterface.addTrackToPlaylist(new MusicBox.Player.Track(JSON.parse(data)));
+			displayNotification('Faixa adicionada ao final da playlist');
 		});
 		$('a[data-element="play_album"]').bind('click.player_gui', function(e){ // play album
 			e.preventDefault();
@@ -671,6 +673,7 @@ $(document).ready(function() {
 				var track_json = data.get(i).getAttribute('data-json');
 				publicInterface.addTrackToPlaylistAfterCurrent(new MusicBox.Player.Track(JSON.parse(track_json)));
 			}
+			displayNotification('Álbum vai tocar a seguir');
 		});
 		$('a[data-element="queue_last_album"]').bind('click.player_gui', function(e){ // queue album in last position
 			e.preventDefault();
@@ -680,6 +683,7 @@ $(document).ready(function() {
 				var track_json = data.get(i).getAttribute('data-json');
 				publicInterface.addTrackToPlaylist(new MusicBox.Player.Track(JSON.parse(track_json)));
 			}
+			displayNotification('Álbum adicionado ao final da playlist');
 		});
 		$('a[data-element="clear_playlist"]').bind('click.player_gui', function(e){ // clear playlist
 			publicInterface.clearPlaylist();
