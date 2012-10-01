@@ -103,7 +103,7 @@ end
 def exportApp()
 	getCurrentTime()
 	$app_export_dirname="#{$currtime}"
-	runLocal "git archive --remote=#{repository} master | gzip > /tmp/#{$app_export_dirname}.tar.gz"
+	runLocal "git archive --remote=#{repository} lab | gzip > /tmp/#{$app_export_dirname}.tar.gz"
 	runLocal "scp /tmp/#{$app_export_dirname}.tar.gz #{user}@#{domain}:/tmp/"
 	runRemote "mkdir #{deploy_app_to}/releases/#{$app_export_dirname} && tar xzf /tmp/#{$app_export_dirname}.tar.gz -C #{deploy_app_to}/releases/#{$app_export_dirname} && rm /tmp/#{$app_export_dirname}.tar.gz"
 end

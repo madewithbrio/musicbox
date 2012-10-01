@@ -305,6 +305,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 body #main > div {display:none;}
 
 body[data-context="Login"] .system_menu,
+body[data-context="Login"] #menu,
 body[data-context="Login"] > #app {display:none;}
 
 body[data-context="Login"] #login,
