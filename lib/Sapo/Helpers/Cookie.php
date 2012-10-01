@@ -48,7 +48,7 @@ class Sapo_Helpers_Cookie
 
 	public static function setCookieParams()
 	{
-		//session_name('MSID');
+		session_name('Musicbox');
 		session_set_cookie_params(0, '/', self::getCookieDomain(), false, true);
 	}
 
