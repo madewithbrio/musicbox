@@ -14,8 +14,8 @@ set :user, "www-data"
 set :group, "www-data" 
 
 # Deployment Settings
-set :repository_base, 'git@github.com'
-set :app_repository,  'hellcore/musicbox.git'
+set :repository_base, 'git@git.intra.sapo.pt'
+set :app_repository,  'musicbox'
 set :repository, "#{repository_base}:#{app_repository}"
 set :deploy_app_to, "/fasmounts/sapo/mobile/#{application}" # This is where your project will be deployed.
 
