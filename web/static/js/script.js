@@ -35,24 +35,6 @@ $(document).ready(function() {
 		$(":root > body").removeClass('search_mode');
 	});
 
-	$('a[href="#clear_playlist"]').bind('click', function(e){
-		e.preventDefault();
-		var answer = window.confirm("Tem a certeza que deseja limpar a sua playlist?")
-		if (answer) {
-			$('.playlist').hide();
-			$(':root > body').removeClass('has_playlist');
-		}
-		else {
-			return;
-		}
-	});
-
-	$('a[href="#toggle_shuffle"]').bind('click', function(e){
-		e.preventDefault();
-		$(this).parent().toggleClass('active');
-	});
-
-	
 	$(document).on('click.gui', 'a[href="#toggle_options"]', function(e){
 		e.preventDefault();
 		var isActive = $(this).parent().hasClass('active');
@@ -448,6 +430,7 @@ $(document).ready(function() {
 		playlist = [], 
 		currentIdx = -1,
 		options = {
+			shuffle: false,
 			repeat: 0,
 		},
 		audio, preLoad, loadNextTimeout;
@@ -466,18 +449,14 @@ $(document).ready(function() {
 		this.TrackIndex 			= object.TrackIndex;
 		this.RecordLabel 			= object.RecordLabel;
 		this.Url 					= object.PreviewUrl || url;
+		this.is_playing 			= false;
 	};
 
 	publicInterface.Track.prototype.getUrl = function () { return this.Url; };
-	publicInterface.Track.prototype.is_playing = function() { return ($(audio).children().attr('src') == this.Url); }
+	//publicInterface.Track.prototype.is_playing = function() { return ($(audio).children().attr('src') == this.Url); }
 	publicInterface.Track.prototype.toJson = function() { return JSON.stringify(this); }
 
 	publicInterface.getPlayList = function () { return playlist; };
-
-	displayNotification = function(text) {
-		$('#notification').html(text).show();
-		$('#notification').delay(1000).fadeOut(500);
-	}
 
 	publicInterface.addTrackToPlaylist = function(track) {
 		var first = playlist.length == 0;
@@ -495,7 +474,8 @@ $(document).ready(function() {
 		var idx = currentIdx;
 		playlist.splice(++idx,0,track);
 		if (first) { 
-			renderPlayerPlay(); 
+			renderPlayerPlay();
+			currentIdx--;
 			$(':root > body').addClass('has_playlist'); 
 		}
 	}
@@ -554,6 +534,8 @@ $(document).ready(function() {
 	playCurrentMusic = function (startPlay) {
 		if (playlist.length == 0) return;
 		validateCurrentIndex();
+		audio.pause();
+
 		$(audio).children().attr('src', playlist[currentIdx].getUrl());
 		$('#app > footer .mini_player').addClass('loading');
 		audio.load();
@@ -583,8 +565,12 @@ $(document).ready(function() {
 
 	renderPlaylist = function() {
 			var template =  MusicBox.getParticalTemplate('playlist_list');
+			var playlistToRender = playlist.map(function(i){ i.is_playing = false; return i; });
+			if (typeof currentIdx == 'number' && currentIdx >= 0 && currentIdx < playlistToRender.length){
+				playlistToRender[currentIdx].is_playing = true;
+			}
 			var view = {
-				TrackList: 	playlist
+				TrackList: 	playlistToRender
 			};
 			$('#playlist').html(Mustache.render(template, view, MusicBox.getParticalTemplate()));
 	};
@@ -596,7 +582,12 @@ $(document).ready(function() {
 		}
 		$(':root > body').toggleClass('player_mode');
 		$('#app > footer').css({'-webkit-transform': 'translate3d(0,' + translation + 'px,0)'});
-	}
+	};
+
+	displayNotification = function(text) {
+		$('#notification').html(text).show();
+		$('#notification').delay(1000).fadeOut(500);
+	};
 
 	$(document).ready(function(){
 		var source;
@@ -637,6 +628,8 @@ $(document).ready(function() {
 			togglePlayer();
 		});
 
+
+		// Interface events bind
 		$(document).on('click.player_gui', 'a[data-element="play"]', function(e){ // play track
 			e.preventDefault();
 			var data = $(this).attr('data-json') || $(this).parents('[data-json]').attr('data-json');
@@ -679,15 +672,21 @@ $(document).ready(function() {
 			e.preventDefault();
 			var data = $("#album_detail ul.album_tracklist [data-json]");
 			if (data.length == 0) return;
-			for(var i = data.length - 1; i >= 0; --i) {
+			for(var i = 0; i < data.length; ++i) {
 				var track_json = data.get(i).getAttribute('data-json');
 				publicInterface.addTrackToPlaylist(new MusicBox.Player.Track(JSON.parse(track_json)));
 			}
 			displayNotification('Álbum adicionado ao final da playlist');
 		});
 		$('a[data-element="clear_playlist"]').bind('click.player_gui', function(e){ // clear playlist
-			publicInterface.clearPlaylist();
-			renderPlaylist();
+			e.preventDefault();
+			var answer = window.confirm("Tem a certeza que deseja limpar a sua playlist?")
+			if (answer) {
+				publicInterface.clearPlaylist();
+				$('.playlist').hide();
+				$(':root > body').removeClass('has_playlist');
+				setTimeout(function() { renderPlaylist(); }, 250);
+			}
 		});
 
 		$('a[data-element="toggle_player"]').bind('click.player_gui', function(e){ // open player -> render playlist
@@ -733,6 +732,11 @@ $(document).ready(function() {
 				parent.addClass('active');
 				options.repeat = 1;
 			}
+		});
+
+		$('a[href="#toggle_shuffle"]').bind('click', function(e){
+			e.preventDefault();
+			$(this).parent().toggleClass('active');
 		});
 
 	});
