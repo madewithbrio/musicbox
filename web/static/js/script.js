@@ -263,11 +263,11 @@ $(document).ready(function() {
 		throw "MusicBox not defined";
 	}
 })((function(){
-	var contextName = "Login", publicInterface = {}, storage = window.localStorage, stogareKey = 'credential';
+	var contextName = "login", publicInterface = {}, storage = window.localStorage, stogareKey = 'credential';
 
 	publicInterface.performeLogin = function(credentialObj) {
 		MusicBox.Service.Auth.login(credentialObj.username, credentialObj.password); // sync request
-		MusicBox.Controller.setCurrentContext('Dashboard');
+		MusicBox.Controller.setCurrentContext('dashboard');
 	};
 
 	$(document).ready(function(){
@@ -306,7 +306,7 @@ $(document).ready(function() {
 		throw "MusicBox not defined";
 	}
 })((function(){
-	var contextName = "Dashboard", publicInterface = {};
+	var contextName = "dashboard", publicInterface = {};
 
 	publicInterface.renderNewAlbuns = function() {
 		MusicBox.Service.Content.GetNewAlbums(function(data){
@@ -362,7 +362,7 @@ $(document).ready(function() {
 		throw "MusicBox not defined";
 	}
 })((function(){
-	var contextName = "Album", publicInterface = {};
+	var contextName = "album_detail", publicInterface = {};
 
 	publicInterface.renderAlbum = function(albumId, albumData) {
 		var renderAlbumGui = function (album) {
@@ -425,7 +425,7 @@ $(document).ready(function() {
 		throw "MusicBox not defined";
 	}
 })((function(){
-	var contextName = 'Player',
+	var contextName = 'player',
 		publicInterface = {}, 
 		playlist = [], 
 		currentIdx = -1,
