@@ -5,17 +5,11 @@ $(document).ready(function() {
 	//setTimeout(function() { window.scrollTo(0,1); }, 2000);
 
 	//$('#app > footer').css({top: (window.innerHeight-54)})
-	$('#main').css({height: (window.innerHeight-50-50)});
+	$('#content').css({height: (window.innerHeight-50)});
 	$('#search').css({height: (window.innerHeight-50-50)});
 	$('#playlist').css({height: (window.innerHeight-50-80)});
-	$('#dashboard > .scrollable').css({height: (window.innerHeight-50-50-73)});
+	//$('#dashboard > .scrollable').css({height: (window.innerHeight-50-50-73)});
 	$('#app > footer').css({height: (window.innerHeight)});
-
-	$('nav.pivot_list ul li a').bind('click', function(e){
-		e.preventDefault();
-		$('nav.pivot_list ul li a.selected').removeClass('selected');
-		$(this).addClass('selected');
-	});
 
 	$('a[href="#search"]').bind('click', function(e){
 		e.preventDefault();
@@ -33,6 +27,11 @@ $(document).ready(function() {
 		e.preventDefault();
 		$(":root > body").toggleClass('menu_mode');
 		$(":root > body").removeClass('search_mode');
+	});
+
+	$('a.mode').bind('click', function(e){
+		e.preventDefault();
+		$(":root > body").toggleClass('online');
 	});
 
 	$(document).on('click.gui', 'a[href="#toggle_options"]', function(e){
@@ -476,22 +475,23 @@ $(document).ready(function() {
 		if (first) { 
 			renderPlayerPlay();
 			currentIdx--;
-			$(':root > body').addClass('has_playlist'); 
+			$(':root > body').addClass('has_playlist');
+			$('#content').css({height: (window.innerHeight-50-50)});
 		}
 	}
 
 	publicInterface.clearPlaylist = function() { // clean playlist and make sure we have reset interfaces
-		var time_bars;
+		var scrubber;
 		audio.pause();
 		$(audio).children().removeAttr('src');
 		playlist = [];
 		currentIdx = -1;
 		setTimeout(function(){
 			$(':root > body').removeClass('has_playlist');
-			time_bars = $('#app > footer nav.time_bars');
-		    time_bars.find('.elapsed_time,.buffered').css({width: '0%'})
-		    time_bars.find('.elapsed_time_counter').html("");
-		    time_bars.find('.total_time').html("");
+			scrubber = $('#app > footer nav.scrubber');
+		    scrubber.find('.elapsed_time,.buffered').css({width: '0%'})
+		    scrubber.find('.elapsed_time_counter').html("");
+		    scrubber.find('.total_time').html("");
 		}, 250);
 	};
 
@@ -537,7 +537,7 @@ $(document).ready(function() {
 		audio.pause();
 
 		$(audio).children().attr('src', playlist[currentIdx].getUrl());
-		$('#app > footer .mini_player').addClass('loading');
+		$('#mini_player').addClass('loading');
 		audio.load();
 		if (startPlay) { audio.play(); }
 		if ($(':root > body').hasClass('player_mode')) { renderPlaylist(); } // if in player mode render playlist
@@ -551,7 +551,7 @@ $(document).ready(function() {
 				Track: 	playlist[currentIdx]
 			};
 
-		$('#app > footer > .mini_player').html(Mustache.render(template, view, MusicBox.getParticalTemplate())).removeClass('loading');
+		$('#mini_player').html(Mustache.render(template, view, MusicBox.getParticalTemplate())).removeClass('loading');
 		if (audio.paused) {
 			$('#app > footer a[data-element="toggle_play"]').parent().addClass('play');
 		} else {
@@ -578,7 +578,7 @@ $(document).ready(function() {
 	togglePlayer = function() {
 		var translation = 0;
 		if (!$(':root > body').hasClass('player_mode')) {
-			translation = -($('#main').height() + $('#app > header').height());
+			translation = -($('#content').height() + $('#app > header').height());
 		}
 		$(':root > body').toggleClass('player_mode');
 		$('#app > footer').css({'-webkit-transform': 'translate3d(0,' + translation + 'px,0)'});
@@ -607,17 +607,17 @@ $(document).ready(function() {
 		$(audio).bind('progress.miniplayer', function(e){
 			if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
 			    var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
-			    $('#app > footer nav.time_bars .buffered').css({width: loaded + '%'});
+			    $('#app > footer nav.scrubber .buffered').css({width: loaded + '%'});
 			}
 		});
 		$(audio).bind('timeupdate.miniplayer', function(e){
-			var played, time_bars;
+			var played, scrubber;
 			if ((audio.currentTime != undefined)) {
 			    played = parseInt(((audio.currentTime / audio.duration) * 100), 10);
-			    time_bars = $('#app > footer nav.time_bars');
-			    time_bars.find('.elapsed_time').css({width: played + '%'});
-			    time_bars.find('.elapsed_time_counter').html(MusicBox.convertDecimalToMinSec(audio.currentTime));
-			    time_bars.find('.total_time').html(MusicBox.convertDecimalToMinSec(audio.duration));
+			    scrubber = $('#app > footer nav.scrubber');
+			    scrubber.find('.elapsed_time').css({width: played + '%'});
+			    scrubber.find('.elapsed_time_counter').html(MusicBox.convertDecimalToMinSec(audio.currentTime));
+			    scrubber.find('.total_time').html(MusicBox.convertDecimalToMinSec(audio.duration));
 			}
 		});
 

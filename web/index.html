@@ -49,7 +49,7 @@
     <script src="/static/js/modernizr.min.js"></script>
 </head>
 
-<body class="nocallout notextselection" data-context="login">
+<body class="online nocallout notextselection" data-context="login">
 
     <!-- LOGIN -->
     <!-- LOGIN -->
@@ -63,97 +63,125 @@
         </form>
     </div>
 
-    <!-- MENU -->
-    <!-- MENU -->
-    <!-- MENU -->
-    <nav id="menu" class="scrollable">
-        <a href="/" class="logo">music box</a>
-        <h3>music box</h3>
-        <ul class="list editorial_menu">
-            <li class="selected"><a href="#" class="ellipsis" data-element="context_dashboard"><i class="icon-star"></i>Destaques</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-exclamation-sign"></i>Novidades</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-bullhorn"></i>Recomendações</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-reorder"></i>Playlists</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-tags"></i>Géneros</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-music"></i>Temáticas</a></li>
-            <li><a href="#" class="ellipsis" data-element="context_playlist"><i class="icon-blank"></i>Em escuta</a></li>
-        </ul>
-        <h3>Luís Carmona</h3>
-        <ul class="list user_menu">
-            <li><a href="#" class="ellipsis"><i class="icon-star"></i>Favoritos</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-group"></i>Amigos</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-cog"></i>Opções</a></li>
-            <li><a href="#" class="ellipsis"><i class="icon-signout"></i>Logout</a></li>
-        </ul>
-    </nav>
-
     <div id="app">
+
+    <!-- MENU -->
+    <!-- MENU -->
+    <!-- MENU -->
+    <section id="left_panel">
+        <header>
+            <a href="/" class="logo">music box</a>
+            <a href="#" class="mode online">Modo</a>
+        </header>
+        <nav class="menu scrollable">
+            <section class="user_menu">
+                <ul class="list">
+                    <li><a href="#" class="ellipsis user"><img src="http://lorempixel.com/30/30/people/" alt="Luís Carmona" />luis.carmona</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-wrench"></i>Opções</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-signout"></i>Logout</a></li>
+                </ul>
+            </section>
+            <section class="editorial_menu online_menu">
+                <h3>Explorar</h3>
+                <ul class="list">
+                    <li class="selected"><a href="#" class="ellipsis"><i class="icon-bullhorn"></i>Novidades</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-thumbs-up"></i>Recomendações</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-trophy"></i>Tops</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-reorder"></i>Playlists</a></li>
+                </ul>
+            </section>
+            <section class="favorites_menu online_menu">
+                <h3>Favoritos</h3>
+                <ul class="list">
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Artistas</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Álbuns</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Músicas</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-reorder"></i>Playlists</a></li>
+                </ul>
+            </section>
+            <section class="downloads_menu online_menu">
+                <h3>Downloads</h3>
+                <ul class="list downloads_menu online_menu">
+                    <li><a href="#" class="ellipsis"><i class="icon-star"></i>Wishlist</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-time"></i>Histórico</a></li>
+                </ul>
+            </section>
+            <section class="shortcuts_menu online_menu">
+                <h3>Atalhos</h3>
+                <ul class="list">
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-music"></i>Ellie Goulding</a>
+                    </li>
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-music"></i>Babel (Deluxe Version)</a>
+                    </li>
+                </ul>
+            </section>
+            <section class="playlists_menu online_menu">
+                <h3>As Minhas Playlists</h3>
+                <ul class="list">
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-reorder"></i>Preferidas</a>
+                    </li>
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-reorder"></i>The Budos Band</a>
+                    </li>
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-group"></i>Playlist colaborativa</a>
+                    </li>
+                    <li>
+                        <a href="#" class="delete"><i class="icon-remove"></i></a>
+                        <a href="#" class="ellipsis"><i class="icon-reorder"></i>Playlist normal</a>
+                    </li>
+                </ul>
+            </section>
+            <section class="offline_menu">
+                <h3>Offline</h3>
+                <ul class="list">
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Todos</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Álbuns</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-music"></i>Músicas</a></li>
+                    <li><a href="#" class="ellipsis"><i class="icon-reorder"></i>Playlists</a></li>
+                </ul>
+            </section>
+        </nav>
+    </section>
 
     <header>
         <a href="/" class="logo">music box</a>
         <nav class="system_menu">
             <ul>
-                <li class="menu_toggle"><a href="#menu">Menu</a></li>
-                <li class="back_link"><a href="#back">Voltar</a></li>
-                <li class="search_toggle"><a href="#search">Pesquisa</a></li>
-                <li class="user_toggle"><a href="#user">User</a></li>
+                <li class="menu_toggle"><a href="#menu"><i class="icon-reorder"></i></a></li>
+                <li class="back_link"><a href="#back"><i class="icon-arrow-left"></i></a></li>
+                <li class="search_toggle"><a href="#search"><i class="icon-search"></i></a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="main" class="scrollable">
+    <div id="content" class="scrollable">
 
-        <p id ="notification" class="notification">Música adicionada ao final da playlist</p>
+        <p id="notification" class="notification">Música adicionada ao final da playlist</p>
 
         <div id="dashboard">
-            <nav class="pivot_list">
-                <p class="title">Destaques</p>
-                <div class="scrollable">
-                    <ul class="clearfix">
-                        <li><a href="#" class="selected">Novidades</a></li>
-                        <li><a href="#">Playlists</a></li>
-                        <li><a href="#">Géneros</a></li>
-                        <li><a href="#">Playlists</a></li>
-                        <li><a href="#">Temáticas</a></li>
-                        <li><a href="#">Em escuta</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="scrollable">
-                <ul id="new_albuns">
+            <header class="list_header">
+                <h2>Novidades</h2>
+                <ul class="toggles">
+                    <li><a href="#list"><i class="icon-th-list"></i></a></li>
+                    <li><a href="#grid" class="selected"><i class="icon-th-large"></i></a></li>
                 </ul>
-            </div>
-            <!--ul class="list dashboard_lists clearfix">
-                
-                <li>
-                    <h1>Novidades</h1>
-                    <div class="scrollable">
-                        <ul id="new_albuns">
-                        </ul>
-                    </div>
-                </li>
-                <li class="scrollable">
-                    <h1>Recomendamos</h1>
-                    <div class="scrollable">
-                        <ul id="recommended_albuns">
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <h1>Playlists</h1>
-                </li>
-                <li>
-                    <h1>Géneros</h1>
-                </li>
-                <li>
-                    <h1>Temáticas</h1>
-                </li>
-                <li>
-                    <h1>Em escuta</h1>
-                </li>
-            </ul-->
+            </header>
+            <ul id="new_albuns">
+            </ul>
         </div>
 
+        <!-- SEARCH -->
+        <!-- SEARCH -->
+        <!-- SEARCH -->
         <div id="search" class="">
             <form action="/search" method="POST" id="" class="search_form">
                 <input type="search" name="query" class="query" placeholder="pesquisa" value="" />
@@ -193,9 +221,9 @@
 
             <ul class="list tracklist album_tracklist clearfix">
             </ul>
-            <ul class="buttons clearfix">
+            <!--ul class="buttons clearfix">
                 <li class="artist"><a href="#" title="Ver artista" class="button"><i class="icon-user"></i>Ver artista</a></li>
-            </ul>
+            </ul-->
         </div>
 
         <!-- ARTIST DETAIL -->
@@ -211,38 +239,35 @@
     </div>
 
     <footer>
-        <!--p class="player_tip">Playlist vazia</p-->
-        <a href="#toggle_player" data-element="toggle_player" class="mini_player">
- 
-        </a>
-        <div class="player">
-            <header>
-                <nav class="system_menu">
-                    <h1>Em escuta</h1>
-                    <audio id="player"></audio>
-                    <ul>
-                        <li class="clear"><a href="#clear_playlist" data-element="clear_playlist">Clear Playlist</a></li>
-                        <li class="close"><a href="#toggle_player" data-element="toggle_player">Close</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <ul id="playlist" class="list tracklist scrollable"></ul>
-            <nav class="controls">
-                <nav class="time_bars">
-                    <div class="bar buffered"></div>
-                    <div class="bar elapsed_time"></div>
-                    <p class="timer elapsed_time_counter">2:33</p>
-                    <p class="timer total_time">4:12</p>
-                </nav>
-                <ul class="clearfix">
-                    <li class="shuffle"><a href="#toggle_shuffle">Shuffle</a></li>
-                    <li class="previous"><a href="#previous" data-element="previous">Previous</a></li>
-                    <li class="play_pause play"><a href="#toggle_play" data-element="toggle_play">Play</a></li>
-                    <li class="next"><a href="#next" data-element="skip">Next</a></li>
-                    <li class="repeat"><a href="#toggle_repeat" data-element="toggle_repeat">Repeat</a></li>
+        <a href="#toggle_player" id="mini_player" data-element="toggle_player" class="clearfix"></a>
+        <header>
+            <nav class="system_menu">
+                <h1>Em escuta</h1>
+                <audio id="player"></audio>
+                <ul>
+                    <li class="clear"><a href="#clear_playlist" data-element="clear_playlist"><i class="icon-trash"></i></a></li>
+                    <li class="close"><a href="#toggle_player" data-element="toggle_player"><i class="icon-remove"></i></a></li>
                 </ul>
             </nav>
-        </div>
+        </header>
+        <ul id="playlist" class="list tracklist scrollable"></ul>
+        <nav class="scrubber">
+            <div class="bars">
+                <div class="bar buffered"></div>
+                <div class="bar elapsed_time"></div>
+                <p class="timer elapsed_time_counter">2:33</p>
+                <p class="timer total_time">4:12</p>
+            </div>
+        </nav>
+        <nav class="controls">
+            <ul class="clearfix">
+                <li class="shuffle"><a href="#toggle_shuffle">Shuffle</a></li>
+                <li class="previous"><a href="#previous" data-element="previous">Previous</a></li>
+                <li class="play_pause play"><a href="#toggle_play" data-element="toggle_play">Play</a></li>
+                <li class="next"><a href="#next" data-element="skip">Next</a></li>
+                <li class="repeat"><a href="#toggle_repeat" data-element="toggle_repeat">Repeat</a></li>
+            </ul>
+        </nav>
     </footer>
 
     </div> <!-- app -->
@@ -267,7 +292,7 @@
     </script>
 
     <script type="text/mustache" data-element="template" data-name="albuns_list">
-    <ul {{#id}}id="{{id}}"{{/id}} class="list album_list clearfix">
+    <ul {{#id}}id="{{id}}"{{/id}} class="list album_list grid_mode clearfix">
     {{#AlbumList}}
         {{> album_list_item}}
     {{/AlbumList}}
@@ -289,9 +314,16 @@
     <script type="text/mustache" data-element="template" data-name="album_list_item">
     <li class="clearfix">
         <a href="#album" data-albumId="{{AlbumId}}" data-json="{{toJson}}">
-            <div class="thumb"><img src="{{LargeAlbumCover}}" alt="" /></div>
+            <div class="thumb">
+                <img src="{{LargeAlbumCover}}" alt="" />
+                <div class="options">
+                    <p class="option share"><i class="icon-share-alt"></i></p>
+                    <p class="option play"><i class="icon-play"></i></p>
+                    <p class="option more"><i class="icon-plus"></i></p>
+                </div>
+            </div>
             <div class="details">
-                <p class="title">{{AlbumName}}</p>
+                <p class="title ellipsis">{{AlbumName}}</p>
                 <p class="band">{{ArtistName}}</p>
                 <p class="tracks">{{NumberOfTracks}} faixas</p>
             </div>
@@ -302,6 +334,7 @@
     <script type="text/mustache" data-element="template" data-name="playlist_list_item">
     <li {{#is_playing}}class="current_track"{{/is_playing}}>
         <a href="#" data-json="{{toJson}}">
+            <i class="icon-volume-up"></i>
             <p class="track_nr"></p>
             <div class="thumb"><img src="{{AlbumCover}}" alt="" /></div>
             <div class="details">
@@ -336,13 +369,8 @@
         <p class="title ellipsis">{{TrackName}}</p>
         <p class="band ellipsis">{{ArtistName}}</p>
     </div>
+    <i class="icon-fullscreen"></i>
     {{/Track}}
-    <nav class="time_bars">
-        <div class="bar buffered"></div>
-        <div class="bar elapsed_time"></div>
-        <p class="timer elapsed_time_counter"></p>
-        <p class="timer total_time"></p>
-    </nav>
     </script>
   <!-- JavaScript at the bottom for fast page loading -->
 
