@@ -302,7 +302,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 .system_menu {position:absolute;top:0;left:0;width:100%;height:50px;}
 .system_menu ul {}
 .system_menu ul li {position:absolute;top:0;box-shadow:1px 0 0 0 rgba(255,255,255,0.2) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
-.system_menu ul li a {display:block;width:50px;height:50px;font-size:20px;text-align:center;line-height:50px;color:#FFF;overflow:hidden;}
+.system_menu ul li a {display:block;width:50px;height:50px;font-size:20px;text-align:center;line-height:50px;color:#FFF;text-shadow:0 1px 0 rgba(0,0,0,0.6);overflow:hidden;}
 .system_menu ul li.selected {box-shadow:none;}
 .system_menu ul li.selected a {background:rgba(0,0,0,0.2);box-shadow:0 1px 3px rgba(0,0,0,0.4) inset,0 5px 10px rgba(0,0,0,0.3) inset;}
 .system_menu ul li.selected a:after {position:absolute;bottom:1px;left:0;right:0;height:2px;background:#00B0D0;box-shadow:0 0 7px 0 #00B0D0,0 -1px 14px 0 #00B0D0;content:"";}
@@ -323,7 +323,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 .system_menu ul li.radio_toggle {right:50px;display:none;}
 .system_menu ul li.playlist_toggle {right:0;opacity:0.2;display:none;}
 .system_menu ul li.user_link {right:0;display:none;}
-.system_menu ul li.user_link img {border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,1);}
+.system_menu ul li.user_link img {position:absolute;top:10px;left:10px;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,1);}
 .has_playlist .system_menu ul li.clear {opacity:1;}
 
 
@@ -439,18 +439,18 @@ a.button {display:block;padding:10px 5px;color:#999;}
 #playlist {background:#4C4C4C;display:none;}
 #playlist li {border-top:1px solid #555;border-bottom:1px solid #333;}
 #playlist li:nth-child(2n) {background:#444;}
-#playlist li a {padding:10px 5px 10px 30px;}
-#playlist li a .track_nr {float:left;width:20px;margin:0 5px 0 0;font-size:12px;font-weight:bold;line-height:40px;text-align:right;color:rgba(255,255,255,0.3);}
+#playlist li a {padding:10px 5px 10px 30px;text-shadow:0 1px 0 rgba(0,0,0,0.5);}
 #playlist li a .thumb {width:40px;height:40px;}
 #playlist li a .thumb {background-image:url(../img/loader222888.gif)}
 #playlist li a .thumb img {}
-#playlist li a .details {}
-#playlist li a .details {color:#FFF;}
+#playlist li a .details {position:relative;padding:0 50px 0 0;margin:2px 0 0 0;color:#FFF;}
 #playlist li a .details .title {}
-#playlist li a .details .band {opacity:0.4;}
-#playlist li a i {position:absolute;top:50%;left:0;width:30px;height:30px;margin:-15px 0 0 0;font-size:20px;line-height:30px;text-align:center;color:#00B0D0;text-shadow:0 1px 0 rgba(0,0,0,0.5);display:none;}
+#playlist li a .details .band {margin:2px 0 0 0;font-size:12px;font-weight:700;color:#999;}
+#playlist li a .details .duration {position:absolute;top:0;right:5px;color:#999;}
+#playlist li a i {position:absolute;top:50%;left:0;width:30px;height:30px;margin:-15px 0 0 0;font-size:20px;line-height:30px;text-align:center;color:#00B0D0;display:none;}
+#playlist li a .track_nr {position:absolute;top:50%;left:0;width:30px;height:30px;margin:-15px 0 0 0;line-height:30px;text-align:center;color:#999;}
 #playlist li.current_track a i {display:block;}
-#playlist li.current_track a .details .title {}
+#playlist li.current_track a .track_nr {display:none;}
 
 .scrubber {position:absolute;top:-4px;left:0;right:0;display:none;}
 .scrubber .bars {position:relative;height:3px;background:rgba(0,0,0,0.6);}
@@ -539,10 +539,14 @@ a.button {display:block;padding:10px 5px;color:#999;}
 /* LOGIN */
 /*********/
 #login {position:absolute;top:0;left:0;width:100%;height:100%;background:#0099AB;display:none;z-index:999999;}
-form.login_form {position:absolute;top:50%;left:50%;width:280px;height:200px;padding:10px;margin:-100px 0 0 -150px;padding:10px 0;}
-form.login_form input {width:238px;height:30px;padding:5px 10px;margin:0 auto 10px auto;line-height:30px;border:1px solid #CCC;-webkit-appearance:none;}
-form.login_form input[type=submit] {width:260px;height:40px;background:#333;text-transform:uppercase;font-family:'Lato',sans-serif;font-size:20px;font-weight:300;color:#FFF;border:none;}
-
+#login h1 {width:220px;height:50px;margin:0 auto 10px auto;background:transparent url(../img/sprite.png) no-repeat 0 0;background-size:500px auto;text-indent:-999999em;overflow:hidden;}
+form.login_form {position:absolute;top:50%;left:50%;width:260px;height:200px;margin:-100px 0 0 -130px;}
+form.login_form input:not([type="checkbox"]) {width:240px;height:30px;padding:5px 10px;margin:0 auto;line-height:30px;border:none;-webkit-appearance:none;}
+form.login_form input[type="text"] {border-bottom:1px solid #CCC;border-radius:8px 8px 0 0;}
+form.login_form input[type="password"] {margin:0 0 10px 0;border-radius:0 0 8px 8px;}
+form.login_form .remember {float:left;padding:5px 0;margin:0 0 0 5px;color:#FFF;}
+form.login_form input[type="submit"] {float:right;width:90px;height:30px;margin:0 5px 0 0;background:rgba(0,0,0,0.5);text-transform:uppercase;font-family:'Lato',sans-serif;font-size:18px;font-weight:300;line-height:20px;color:#FFF;border:none;border-radius:5px;}
+form.login_form input[type="submit"]:hover {background:rgba(0,0,0,0.8);}
 
 
 
@@ -685,9 +689,11 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 @media only screen and (min-width:1024px) {
 #app {position:absolute;width:100%;height:100%;}
 
-#left_panel {top:50px;bottom:50px;width:199px;height:auto;background:#F6F6F6;border-right:1px solid #DDD;opacity:1;}
-#left_panel header .mode {background:#E9E9E9;color:#777;text-shadow:0 1px 0 rgba(255,255,255,1);border-top:1px solid #FFF;border-bottom:1px solid #CCC;}
-.menu {top:50px;width:199px;}
+#left_panel {top:50px;bottom:50px;width:219px;height:auto;background:#F6F6F6;border-right:1px solid #DDD;opacity:1;}
+/*#left_panel header .mode {background:#E9E9E9;color:#777;text-shadow:0 1px 0 rgba(255,255,255,1);border-top:1px solid #FFF;border-bottom:1px solid #CCC;}*/
+#left_panel header {height:0;}
+#left_panel header .mode {top:-50px;height:50px;background:none;border:none;color:rgba(0,0,0,0);text-shadow:none;z-index:1;}
+.menu {top:0;width:219px;}
 .menu section {padding:10px 0;border-top:1px solid #FFF;border-bottom:1px solid #DDD;}
 .menu h3 {padding:4px 8px;background:none;font-weight:400;color:#999;text-shadow:0 1px 0 rgba(255,255,255,1);border:none;}
 .menu ul {}
@@ -712,10 +718,10 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#212121',GradientType=0 );
   box-shadow:0 -1px 0 0 rgba(0,0,0,1) inset,0 -1px 0 0 rgba(0,0,0,1),1px 0 0 0 rgba(255,255,255,0.1) inset;
 }
-#app > header .logo {width:200px;margin:0;background-position:-239px 0;}
+#app > header .logo {width:220px;margin:0;background-position:-239px 0;z-index:1;}
 
 #app > footer {display:block;position:absolute;left:0;bottom:0;width:100%;height:50px!important;}
-#app > footer .controls {display:block;position:absolute;top:0;left:0;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+#app > footer .controls {display:block;position:absolute;top:0;left:0;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;z-index:1;}
 #app > footer #mini_player {display:block;position:absolute;top:0;left:250px;right:420px;padding:0 5px 0 50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
 #app > footer #mini_player i {display:none}
 .scrubber {display:block;position:absolute;top:0;left:auto;right:100px;width:320px;height:50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
@@ -744,16 +750,16 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 .system_menu ul li.radio_toggle {display:block;}
 #app > footer .system_menu ul li.selected a:after {bottom:auto;top:1px;box-shadow:0 0 7px 0 #00B0D0,0 1px 14px 0 #00B0D0;}
 
-.search_form {display:block;left:200px;right:150px;height:50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+.search_form {display:block;left:220px;right:150px;height:50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
 .search_form [type=search] {top:11px;left:10px;right:50%;height:16px;padding:4px 10px;background:#111;font-size:12px;line-height:16px;color:#777;box-shadow:0 1px 3px 0 rgba(0,0,0,1) inset,0 1px 0 0 rgba(255,255,255,0.1);}
 .search_form [type=search]::-webkit-input-placeholder {color:#555;}
 /*.search_form [type=search]:focus {box-shadow:0 0 5px 2px rgba(255,255,255,0.1);}*/
 .search_form [type=submit] {top:10px;right:50%;width:30px;height:30px;}
 
-#navigation {display:block;position:absolute;left:200px;right:0;}
+#navigation {display:block;position:absolute;left:220px;right:0;}
 
 #content {
-  position:absolute;top:84px;left:200px;right:0;bottom:50px;height:auto!important;box-shadow:none;
+  position:absolute;top:84px;left:220px;right:0;bottom:50px;height:auto!important;box-shadow:none;
   transition:none;
   -webkit-transition:none;
 }
@@ -764,15 +770,16 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 .album_list.grid_mode li a {width:154px;padding:0;}
 
 .album_detail {position:relative;padding:30px;}
+.album_detail header {margin:0 0 30px 0;}
 .album_detail header .thumb {width:154px;height:154px;margin:0 10px 0 0;}
-body:not(.playlist_mode) .album_detail .buttons {position:absolute;top:10px;right:10px;}
-
-
+body:not(.playlist_mode) .album_detail > .buttons {position:absolute;top:10px;right:30px;}
+body:not(.playlist_mode) .album_detail > .buttons li {width:30px;margin:0 0 0 5px;}
+body:not(.playlist_mode) .album_detail > .buttons li a {width:30px;height:30px;font-size:16px;line-height:30px;color:#BBB;box-shadow:0 0 0 2px #BBB inset;}
 
 .has_playlist .system_menu ul li.playlist_toggle {opacity:1;}
 .playlist_mode #navigation,
 .playlist_mode #content {right:320px;}
-.playlist_mode #playlist {display:block;position:fixed;bottom:50px;right:0;width:320px;}
+.playlist_mode #playlist {display:block;position:fixed;bottom:50px;right:0;width:320px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.9);}
 
 }
 
@@ -788,6 +795,11 @@ body:not(.playlist_mode) .album_detail .buttons {position:absolute;top:10px;righ
 .no-touch #playlist::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.1);}
 .no-touch #playlist:hover::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.3);}
 
+.no-touch .buttons.icon_buttons li a:hover {color:#00B0D0;box-shadow:0 0 0 2px #00B0D0 inset;}
+
+.no-touch #playlist li a:hover .duration {display:none;}
+
+.no-touch .system_menu li:not(.selected) a:hover {background:rgba(0,0,0,0.1);}
 
 .no-touch .menu ul li a.delete {position:absolute;top:0;right:0;width:19px;height:19px;padding:0!important;margin:0;font-size:10px;line-height:21px;text-align:center;color:#999;z-index:1;}
 .no-touch .menu ul li a.delete i {margin:0;}
@@ -808,6 +820,11 @@ body:not(.playlist_mode) .album_detail .buttons {position:absolute;top:10px;righ
 .no-touch #navigation > a.active:hover,
 .no-touch #navigation .breadcrumb li a:hover {background:#E1E1E1;}
 .no-touch #navigation .breadcrumb li a:hover:after {border-left-color:#E1E1E1;}
+
+
+
+.no-touch #playlist li a:hover {background:rgba(255,255,255,0.1);}
+
 
 
 /* iPhone 4, Opera Mobile 11 and other high pixel ratio devices ----------- */

@@ -55,19 +55,23 @@
     <!-- LOGIN -->
     <!-- LOGIN -->
     <div id="login" class="login">
-        <h1>Login</h1>
         <form action="/login" method="POST" id="" class="login_form">
-            <input type="username" name="username" class="username" placeholder="username" value="" />
+            <h1>music box</h1>
+            <input type="text" name="username" class="username" placeholder="username" value="" />
             <input type="password" name="password" class="password" placeholder="password" value="" />
-            <input type="submit" value="Entrar" class="button" />
+            <label class="remember">
+                <input type="checkbox" value="1" name="remember_me" checked="checked">
+                <span>Manter-me ligado</span>
+            </label>
+            <input type="submit" value="login" class="button" />
         </form>
     </div>
 
     <div id="app">
 
-    <!-- MENU -->
-    <!-- MENU -->
-    <!-- MENU -->
+    <!-- LEFT PANEL -->
+    <!-- LEFT PANEL -->
+    <!-- LEFT PANEL -->
     <section id="left_panel">
         <header>
             <a href="/" class="logo">music box</a>
@@ -152,35 +156,44 @@
         </nav>
     </section>
 
+    <!-- HEADER -->
+    <!-- HEADER -->
+    <!-- HEADER -->
     <header>
-        <a href="/" class="logo">music box</a>
         <nav class="system_menu">
             <ul>
                 <li class="menu_toggle"><a href="#menu"><i class="icon-reorder"></i></a></li>
                 <li class="back_link"><a href="#back"><i class="icon-arrow-left"></i></a></li>
                 <li class="search_toggle"><a href="#search"><i class="icon-search"></i></a></li>
                 <li class="notifications_toggle"><a href="#user"><i class="icon-bell"></i></a></li>
-                <li class="friends_toggle selected"><a href="#friends"><i class="icon-group"></i></a></li>
+                <li class="friends_toggle"><a href="#friends"><i class="icon-group"></i></a></li>
                 <li class="user_link"><a href="#user"><img src="http://lorempixel.com/30/30/people/" alt="Luís Carmona" /></a></li>
             </ul>
         </nav>
+        <a href="/" class="logo">music box</a>
         <form action="/" method="GET" class="search_form">
             <input type="search" name="search" value="" placeholder="pesquisa" autofocus />
             <input type="submit" value="Pesquisar" />
         </form>
     </header>
 
-        <nav id="navigation">
-            <a href="#" class="back active"><i class="icon-caret-left"></i></a>
-            <a href="#" class="forward"><i class="icon-caret-right"></i></a>
-            <ul class="breadcrumb">
-                <li><a href="#">Novidades</a></li>
-                <li><a href="#">Nome do álbum</a></li>
-                <li><a href="#">Artista</a></li>
-                <li>Cena sem link</li>
-            </ul>
-        </nav>
+    <!-- NAV + BREADCRUMB -->
+    <!-- NAV + BREADCRUMB -->
+    <!-- NAV + BREADCRUMB -->
+    <nav id="navigation">
+        <a href="#" class="back active"><i class="icon-caret-left"></i></a>
+        <a href="#" class="forward"><i class="icon-caret-right"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="#">Novidades</a></li>
+            <li><a href="#">Nome do álbum</a></li>
+            <li><a href="#">Artista</a></li>
+            <li>Cena sem link</li>
+        </ul>
+    </nav>
 
+    <!-- CONTENT -->
+    <!-- CONTENT -->
+    <!-- CONTENT -->
     <div id="content" class="scrollable">
 
         <p id="notification" class="notification">Música adicionada ao final da playlist</p>
@@ -258,6 +271,9 @@
 
     </div>
 
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <!-- FOOTER -->
     <footer>
         <a href="#toggle_player" id="mini_player" data-element="toggle_player" class="clearfix">
             <div class="thumb"></div>
@@ -293,7 +309,7 @@
         <nav class="system_menu">
             <ul>
                 <li class="playlist_toggle"><a href="#playlist"><i class="icon-list-ul"></i></a></li>
-                <li class="radio_toggle"><a href="#radio"><i class="icon-magic"></i></a></li>
+                <li class="radio_toggle"><a href="#radio"><i class="icon-headphones"></i></a></li>
             </ul>
         </nav>
     </footer>
@@ -363,11 +379,12 @@
     <li {{#is_playing}}class="current_track"{{/is_playing}}>
         <a href="#" data-json="{{toJson}}">
             <i class="icon-volume-up"></i>
-            <p class="track_nr"></p>
+            <p class="track_nr">01</p>
             <div class="thumb"><img src="{{AlbumCover}}" alt="" /></div>
             <div class="details">
                 <p class="title ellipsis">{{TrackName}}</p>
-                <p class="band ellipsis">{{ArtistName}}<span class="album"> - {{AlbumName}}<span></p>
+                <p class="band ellipsis">{{ArtistName}}<!--span class="album"> - {{AlbumName}}<span--></p>
+                <p class="duration">00:00</p>
             </div>
         </a>
     </li>
