@@ -321,7 +321,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 .system_menu ul li.notifications_toggle {right:100px;display:none;}
 .system_menu ul li.friends_toggle {right:50px;display:none;}
 .system_menu ul li.radio_toggle {right:50px;display:none;}
-.system_menu ul li.playlist_toggle {right:0;display:none;}
+.system_menu ul li.playlist_toggle {right:0;opacity:0.2;display:none;}
 .system_menu ul li.user_link {right:0;display:none;}
 .system_menu ul li.user_link img {border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,1);}
 .has_playlist .system_menu ul li.clear {opacity:1;}
@@ -429,7 +429,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 
 #mini_player {display:block;height:50px;padding:0 55px 0 50px;}
 #mini_player.loading:after {top:15px;right:14px;width:24px;height:24px;background:transparent url(../img/loader222888.gif) no-repeat 0 0;background-size:auto auto;}
-#mini_player .thumb {position:absolute;top:5px;left:5px;width:40px;height:40px;background:rgba(255,255,255,0.1);}
+#mini_player .thumb {position:absolute;top:5px;left:5px;width:40px;height:40px;background:#333;box-shadow:0 1px 0 0 rgba(255,255,255,0.1),0 1px 3px 0 rgba(0,0,0,0.5) inset;}
 #mini_player .thumb img {width:100%;}
 #mini_player .details {padding:5px 0 7px 0;color:#FFF;}
 #mini_player .details .title {}
@@ -502,7 +502,7 @@ a.button {display:block;padding:10px 5px;color:#999;}
 .album_list.grid_mode {padding:0 5px;}
 .album_list.grid_mode li {float:left;margin:0 0 10px 0;}
 .album_list.grid_mode li a {width:145px;padding:5px;overflow:visible}
-.album_list.grid_mode li a .thumb {position:relative;float:none;width:100%;min-height:145px;margin:0 0 5px 0;box-shadow:0 0 0 1px rgba(0,0,0,0.05);}
+.album_list.grid_mode li a .thumb {position:relative;float:none;width:100%;min-height:145px;margin:0 0 5px 0;box-shadow:0 0 0 1px rgba(0,0,0,0.08);}
 .album_list.grid_mode li a .details {height:35px;font-size:14px;text-align:center;}
 .album_list.grid_mode li a .details .title {font-weight:600;}
 .album_list.grid_mode li a .details .band {color:#999;}
@@ -560,7 +560,7 @@ form.login_form input[type=submit] {width:260px;height:40px;background:#333;text
 .album_detail header .nr_tracks {}
 .album_detail header .genre {}
 .album_detail header .year {}
-.album_detail header .thumb {display:block;float:left;width:100px;height:100px;margin:0 5px 0 0;}
+.album_detail header .thumb {display:block;float:left;width:100px;height:100px;margin:0 5px 0 0;box-shadow:0 0 0 1px rgba(0,0,0,0.08);}
 .album_detail header .thumb:after {position:absolute;top:50%;left:50%;width:50px;height:50px;margin:-25px 0 0 -25px;background:rgba(0,0,0,0.7) url(../img/sprite.png) no-repeat 0 -100px;background-size:500px auto;border:2px solid #FFF;border-radius:28px;content:"";display:none;}
 .album_detail .buttons.icon_buttons {color:#555;}
 
@@ -716,8 +716,23 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 
 #app > footer {display:block;position:absolute;left:0;bottom:0;width:100%;height:50px!important;}
 #app > footer .controls {display:block;position:absolute;top:0;left:0;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
-#app > footer #mini_player {display:block;position:absolute;top:0;left:250px;right:100px;padding:0 5px 0 50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+#app > footer #mini_player {display:block;position:absolute;top:0;left:250px;right:420px;padding:0 5px 0 50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
 #app > footer #mini_player i {display:none}
+.scrubber {display:block;position:absolute;top:0;left:auto;right:100px;width:320px;height:50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+.scrubber .bars {top:22px;height:6px;margin:0 50px;border:1px solid rgba(0,0,0,0.5);border-radius:3px;box-shadow:0 1px 0 0 rgba(255,255,255,0.1);}
+.scrubber .bar {border-radius:3px;}
+.scrubber .bar.elapsed_time {
+  background: rgb(0,196,213);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwYzRkNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDczOWQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(0,196,213,1) 0%, rgba(0,115,157,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,196,213,1)), color-stop(100%,rgba(0,115,157,1)));
+  background: -webkit-linear-gradient(top,  rgba(0,196,213,1) 0%,rgba(0,115,157,1) 100%);
+  background: -o-linear-gradient(top,  rgba(0,196,213,1) 0%,rgba(0,115,157,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(0,196,213,1) 0%,rgba(0,115,157,1) 100%);
+  background: linear-gradient(to bottom,  rgba(0,196,213,1) 0%,rgba(0,115,157,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c4d5', endColorstr='#00739d',GradientType=0 );
+}
+.scrubber .timer {display:block;}
 
 .system_menu ul li {box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
 .system_menu ul li.menu_toggle,
@@ -727,7 +742,7 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 .system_menu ul li.user_link,
 .system_menu ul li.playlist_toggle,
 .system_menu ul li.radio_toggle {display:block;}
-#app > footer .system_menu ul li.selected a:after {bottom:auto;top:1px;}
+#app > footer .system_menu ul li.selected a:after {bottom:auto;top:1px;box-shadow:0 0 7px 0 #00B0D0,0 1px 14px 0 #00B0D0;}
 
 .search_form {display:block;left:200px;right:150px;height:50px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
 .search_form [type=search] {top:11px;left:10px;right:50%;height:16px;padding:4px 10px;background:#111;font-size:12px;line-height:16px;color:#777;box-shadow:0 1px 3px 0 rgba(0,0,0,1) inset,0 1px 0 0 rgba(255,255,255,0.1);}
@@ -737,7 +752,11 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 
 #navigation {display:block;position:absolute;left:200px;right:0;}
 
-#content {position:absolute;top:84px;left:200px;right:0;bottom:50px;height:auto!important;box-shadow:none;}
+#content {
+  position:absolute;top:84px;left:200px;right:0;bottom:50px;height:auto!important;box-shadow:none;
+  transition:none;
+  -webkit-transition:none;
+}
 .panel {padding:10px 20px;}
 
 .album_list.grid_mode {padding:0;}
@@ -745,8 +764,16 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 .album_list.grid_mode li a {width:154px;padding:0;}
 
 .album_detail {position:relative;padding:30px;}
-.album_detail header .thumb {width:154px;height:154px;}
-.album_detail .buttons {position:absolute;top:10px;right:10px;}
+.album_detail header .thumb {width:154px;height:154px;margin:0 10px 0 0;}
+body:not(.playlist_mode) .album_detail .buttons {position:absolute;top:10px;right:10px;}
+
+
+
+.has_playlist .system_menu ul li.playlist_toggle {opacity:1;}
+.playlist_mode #navigation,
+.playlist_mode #content {right:320px;}
+.playlist_mode #playlist {display:block;position:fixed;bottom:50px;right:0;width:320px;}
+
 }
 
 
@@ -758,6 +785,9 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 .no-touch .scrollable::-webkit-scrollbar-thumb {background:rgba(0,0,0,0.1);border-radius:2px;}
 .no-touch .scrollable::-webkit-scrollbar-piece {background:none;}
 .no-touch .scrollable:hover::-webkit-scrollbar-thumb {background:rgba(0,0,0,0.4);}
+.no-touch #playlist::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.1);}
+.no-touch #playlist:hover::-webkit-scrollbar-thumb {background:rgba(255,255,255,0.3);}
+
 
 .no-touch .menu ul li a.delete {position:absolute;top:0;right:0;width:19px;height:19px;padding:0!important;margin:0;font-size:10px;line-height:21px;text-align:center;color:#999;z-index:1;}
 .no-touch .menu ul li a.delete i {margin:0;}

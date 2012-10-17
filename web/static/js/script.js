@@ -17,6 +17,14 @@ $(document).ready(function() {
 		$(":root > body").removeClass('menu_mode');
 	});
 
+	$('a[href="#playlist"]').bind('click', function(e){
+		e.preventDefault();
+		$('#playlist').css({height: (window.innerHeight-50-50)});
+		renderPlaylist();
+		$(this).parent().toggleClass('selected');
+		$(":root > body").toggleClass('playlist_mode');
+	});
+
 	$('a[href="#user"]').bind('click', function(e){
 		e.preventDefault();
 		$(":root > body").toggleClass('menu_mode');
