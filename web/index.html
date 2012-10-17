@@ -159,22 +159,42 @@
                 <li class="menu_toggle"><a href="#menu"><i class="icon-reorder"></i></a></li>
                 <li class="back_link"><a href="#back"><i class="icon-arrow-left"></i></a></li>
                 <li class="search_toggle"><a href="#search"><i class="icon-search"></i></a></li>
+                <li class="notifications_toggle"><a href="#user"><i class="icon-bell"></i></a></li>
+                <li class="friends_toggle selected"><a href="#friends"><i class="icon-group"></i></a></li>
+                <li class="user_link"><a href="#user"><img src="http://lorempixel.com/30/30/people/" alt="Luís Carmona" /></a></li>
             </ul>
         </nav>
+        <form action="/" method="GET" class="search_form">
+            <input type="search" name="search" value="" placeholder="pesquisa" autofocus />
+            <input type="submit" value="Pesquisar" />
+        </form>
     </header>
+
+        <nav id="navigation">
+            <a href="#" class="back active"><i class="icon-caret-left"></i></a>
+            <a href="#" class="forward"><i class="icon-caret-right"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="#">Novidades</a></li>
+                <li><a href="#">Nome do álbum</a></li>
+                <li><a href="#">Artista</a></li>
+                <li>Cena sem link</li>
+            </ul>
+        </nav>
 
     <div id="content" class="scrollable">
 
         <p id="notification" class="notification">Música adicionada ao final da playlist</p>
+        
 
-        <div id="dashboard">
-            <header class="list_header">
+
+        <div id="dashboard" class="panel exploration">
+            <div class="list_header">
                 <h2>Novidades</h2>
                 <ul class="toggles">
                     <li><a href="#list"><i class="icon-th-list"></i></a></li>
                     <li><a href="#grid" class="selected"><i class="icon-th-large"></i></a></li>
                 </ul>
-            </header>
+            </div>
             <ul id="new_albuns">
             </ul>
         </div>
@@ -182,7 +202,7 @@
         <!-- SEARCH -->
         <!-- SEARCH -->
         <!-- SEARCH -->
-        <div id="search" class="">
+        <div id="search" class="panel search">
             <form action="/search" method="POST" id="" class="search_form">
                 <input type="search" name="query" class="query" placeholder="pesquisa" value="" />
                 <input type="submit" value="Pesquisar" />
@@ -207,7 +227,7 @@
         <!-- ALBUM DETAIL -->
         <!-- ALBUM DETAIL -->
         <!-- ALBUM DETAIL -->
-        <div id="album_detail" class="album_detail">
+        <div id="album_detail" class="panel album_detail">
             <header class="clearfix">
             </header>
             
@@ -229,7 +249,7 @@
         <!-- ARTIST DETAIL -->
         <!-- ARTIST DETAIL -->
         <!-- ARTIST DETAIL -->
-        <div id="artist_detail" class="artist_detail panel">
+        <div id="artist_detail" class="panel artist_detail">
             <header class="clearfix">
                 <div class="thumb"><img src="http://lorempixel.com/320/140/" alt="" /></div>
                 <p class="band">The Independent Music Machine</p>
@@ -266,6 +286,12 @@
                 <li class="play_pause play"><a href="#toggle_play" data-element="toggle_play">Play</a></li>
                 <li class="next"><a href="#next" data-element="skip">Next</a></li>
                 <li class="repeat"><a href="#toggle_repeat" data-element="toggle_repeat">Repeat</a></li>
+            </ul>
+        </nav>
+        <nav class="system_menu">
+            <ul>
+                <li class="playlist_toggle selected"><a href="#playlist"><i class="icon-list-ul"></i></a></li>
+                <li class="radio_toggle"><a href="#radio"><i class="icon-magic"></i></a></li>
             </ul>
         </nav>
     </footer>
