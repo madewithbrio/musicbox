@@ -6,35 +6,31 @@ $(document).ready(function() {
 
 	//$('#app > footer').css({top: (window.innerHeight-54)})
 	$('#content').css({height: (window.innerHeight-50)});
-	$('#search').css({height: (window.innerHeight-50-50)});
+	//$('#search').css({height: (window.innerHeight-50-50)});
 	$('#playlist').css({height: (window.innerHeight-50-80)});
 	//$('#dashboard > .scrollable').css({height: (window.innerHeight-50-50-73)});
 	$('#app > footer').css({height: (window.innerHeight)});
 
-	$('a[href="#search"]').bind('click', function(e){
+
+	$('.system_menu li a').bind('click', function(e){
 		e.preventDefault();
-		$(":root > body").toggleClass('search_mode');
-		$(":root > body").removeClass('menu_mode');
+		$(this).parent().toggleClass('selected');
 	});
 
 	$('a[href="#playlist"]').bind('click', function(e){
-		e.preventDefault();
 		$('#playlist').css({height: (window.innerHeight-50-50)});
 		renderPlaylist();
-		$(this).parent().toggleClass('selected');
 		$(":root > body").toggleClass('playlist_mode');
 	});
 
-	$('a[href="#user"]').bind('click', function(e){
+	$('a[href="#search"]').bind('click', function(e){
 		e.preventDefault();
-		$(":root > body").toggleClass('menu_mode');
-		$(":root > body").removeClass('search_mode');
+		$(":root > body").toggleClass('search_mode');
 	});
 
 	$('a[href="#menu"]').bind('click', function(e){
 		e.preventDefault();
 		$(":root > body").toggleClass('menu_mode');
-		$(":root > body").removeClass('search_mode');
 	});
 
 	$('a.mode').bind('click', function(e){

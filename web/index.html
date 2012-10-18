@@ -74,8 +74,8 @@
     <!-- LEFT PANEL -->
     <section id="left_panel">
         <header>
-            <a href="/" class="logo">music box</a>
-            <a href="#" class="mode online">Modo</a>
+            <a href="#" class="logo">music box</a>
+            <a href="#" class="mode online"></a>
         </header>
         <nav class="menu scrollable">
             <section class="user_menu">
@@ -165,12 +165,13 @@
                 <li class="menu_toggle"><a href="#menu"><i class="icon-reorder"></i></a></li>
                 <li class="back_link"><a href="#back"><i class="icon-arrow-left"></i></a></li>
                 <li class="search_toggle"><a href="#search"><i class="icon-search"></i></a></li>
-                <li class="notifications_toggle"><a href="#user"><i class="icon-bell"></i></a></li>
+                <li class="notifications_toggle"><a href="#user"><span class="number">12</span><i class="icon-globe"></i></a></li>
                 <li class="friends_toggle"><a href="#friends"><i class="icon-group"></i></a></li>
                 <li class="user_link"><a href="#user"><img src="http://lorempixel.com/30/30/people/" alt="Luís Carmona" /></a></li>
             </ul>
         </nav>
         <a href="/" class="logo">music box</a>
+        <a href="#" class="mode online"></a>
         <form action="/" method="GET" class="search_form">
             <input type="search" name="search" value="" placeholder="pesquisa" autofocus />
             <input type="submit" value="Pesquisar" />
@@ -183,10 +184,13 @@
     <nav id="navigation">
         <a href="#" class="back active"><i class="icon-caret-left"></i></a>
         <a href="#" class="forward"><i class="icon-caret-right"></i></a>
-        <ul class="breadcrumb">
+        <ul class="breadcrumb scrollable clearfix">
             <li><a href="#">Novidades</a></li>
+            <li><a href="#">Nome do artista</a></li>
+            <li><a href="#">Nome do artista</a></li>
+            <li><a href="#">Nome do artista</a></li>
             <li><a href="#">Nome do álbum</a></li>
-            <li><a href="#">Artista</a></li>
+            <li><a href="#">Nome da playlist</a></li>
             <li>Cena sem link</li>
         </ul>
     </nav>
@@ -275,6 +279,12 @@
     <!-- FOOTER -->
     <!-- FOOTER -->
     <footer>
+        <nav class="system_menu">
+            <ul>
+                <li class="playlist_toggle"><a href="#playlist"><i class="icon-list-ul"></i></a></li>
+                <li class="radio_toggle"><a href="#radio"><i class="icon-headphones"></i></a></li>
+            </ul>
+        </nav>
         <a href="#toggle_player" id="mini_player" data-element="toggle_player" class="clearfix">
             <div class="thumb"></div>
         </a>
@@ -306,12 +316,6 @@
                 <li class="repeat"><a href="#toggle_repeat" data-element="toggle_repeat">Repeat</a></li>
             </ul>
         </nav>
-        <nav class="system_menu">
-            <ul>
-                <li class="playlist_toggle"><a href="#playlist"><i class="icon-list-ul"></i></a></li>
-                <li class="radio_toggle"><a href="#radio"><i class="icon-headphones"></i></a></li>
-            </ul>
-        </nav>
     </footer>
 
     </div> <!-- app -->
@@ -320,7 +324,7 @@
     {{#Album}}
     <a href="#" class="thumb"><img src="{{LargeAlbumCover}}" alt="" /></a>
     <div class="details">
-        <p class="band">{{ArtistName}}</p>
+        <a href="#" class="band">{{ArtistName}}</a>
         <p class="title">{{AlbumName}}</p>
         <p class="metadata ellipsis">
             {{#Genre}}<span class="genre">{{Genre}}</span>{{/Genre}}
