@@ -359,11 +359,6 @@ a.button {display:block;padding:10px 5px;color:#999;}
 }
 #left_panel .logo {position:absolute;top:0;left:0;width:100px;height:50px;background:transparent url(../img/sprite.png) no-repeat -64px 0;background-size:500px auto;text-indent:-999999em;z-index:1;}
 .menu {position:absolute;top:50px;left:0;bottom:0;width:100%;}
-.menu .online_menu,
-.menu .offline_menu {
-  transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-}
 .menu .user {padding:7px 10px;line-height:30px;}
 .menu .user img {margin:0 10px 0 0;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,1);}
 .menu h3 {padding:5px 10px;background:#292929;font-size:12px;font-weight:900;text-transform:uppercase;color:#777;border-top:1px solid #333;border-bottom:1px solid #000;}
@@ -716,6 +711,8 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
   background: linear-gradient(to bottom,  rgba(44,44,44,1) 0%,rgba(33,33,33,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#212121',GradientType=0 );
   box-shadow:0 -1px 0 0 rgba(0,0,0,1) inset,0 -1px 0 0 rgba(0,0,0,1),1px 0 0 0 rgba(255,255,255,0.1) inset;
+  transition:none;
+  -webkit-transition:none;
 }
 #app > header .logo {width:220px;margin:0;background-position:-239px 0;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,1) inset;z-index:1;}
 #app > header .mode {display:block;position:absolute;top:0;left:125px;width:90px;height:50px;background:none;border:none;}
@@ -819,12 +816,18 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 
 
 .has_playlist .system_menu ul li.playlist_toggle {opacity:1;}
-.playlist_mode #playlist {display:block;position:fixed;bottom:50px;right:0;width:320px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.9);z-index:10;}
+.playlist_mode #playlist {display:block;position:fixed;bottom:70px;right:0;width:320px;box-shadow:1px 0 0 0 rgba(255,255,255,0.1) inset,-1px 0 0 0 rgba(0,0,0,0.9);z-index:10;}
 
 }
 
 
 
+
+
+
+/********************/
+/****   LAPTOP   ****/
+/********************/
 @media only screen and (min-width:1024px) {
 #left_panel {width:219px;height:auto;background:#F6F6F6;border-right:1px solid #DDD;opacity:1;}
 #left_panel header {height:0;}
@@ -848,6 +851,19 @@ body[data-context="artist_detail"] .playlist_detail {display:block !important;}
 #navigation {left:220px;}
 #content {left:220px;}
 
+.playlist_mode #navigation,
+.playlist_mode #content {right:320px;}
+}
+
+
+
+
+
+
+/*********************/
+/****   DESKTOP   ****/
+/*********************/
+@media only screen and (min-width:1280px) {
 .playlist_mode #navigation,
 .playlist_mode #content {right:320px;}
 }
