@@ -269,6 +269,7 @@ h1,h2,h3,h4,h5,h6 {font-size:30px;font-weight:400;color:#333;}
 
 .scrollable {overflow:scroll;-webkit-overflow-scrolling:touch;}
 .scrollable::-webkit-scrollbar {display:none;}
+.scrollable * {-webkit-transform:translate3d(0,0,0);}
 
 .buttons {margin:10px 0;background:#FFF;}
 .buttons li {float:left;margin:4px 0;}
@@ -320,7 +321,8 @@ a.button {display:block;padding:10px 5px;color:#999;}
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 }
-#app > header .logo {display:block;width:220px;height:50px;margin:0 auto;background:transparent url(../img/sprite.png) no-repeat 0 0;background-size:500px auto;text-indent:-999999px;overflow:hidden;box-shadow:1px 0 0 0 rgba(255,255,255,0.3) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+#app > header .logo {display:block;position:relative;height:50px;margin:0 50px;text-indent:-999999px;box-shadow:1px 0 0 0 rgba(255,255,255,0.3) inset,-1px 0 0 0 rgba(0,0,0,0.3) inset;}
+#app > header .logo:after {position:absolute;top:0;left:50%;width:220px;height:50px;margin:0 0 0 -110px;background:transparent url(../img/sprite.png) no-repeat 0 0;background-size:500px auto;overflow:hidden;content:"";}
 #app > header .mode {display:none;}
 
 
@@ -613,7 +615,7 @@ body[data-context="login"] .system_menu,
 body[data-context="login"] .menu,
 body[data-context="login"] #app {display:none;}
 
-body[data-context="login"] #login,
+body[data-context="login"] #login {display:none;}
 body[data-context="dashboard"] .exploration,
 body[data-context="album_detail"] .album_detail,
 body[data-context="artist_detail"] .artist_detail,
